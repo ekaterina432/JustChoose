@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutproj2/ui/recipe_card.dart';
 import 'package:flutproj2/models/recipe_model.dart';
+import 'package:flutproj2/pages/recipe_details.dart';
 class RecipesListUI extends StatelessWidget{
   List<RecipeModel> recipes;
 
-  RecipesListUI(this.recipes, {Key? key}) : super(key: key);
+  RecipesListUI({ required this.recipes, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context){
@@ -19,7 +20,14 @@ class RecipesListUI extends StatelessWidget{
                 vertical: 12,
             ),
             child: InkWell(
-              child: RecipeCard(recipes[index]),
+              onTap:() => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RecipeDetails(
+                      recipeModel: recipes[index],
+                    ),
+                  )),
+              child: RecipeCard(recipeModel: recipes[index]),
             ),
           );
         }

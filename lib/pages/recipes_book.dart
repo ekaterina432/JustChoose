@@ -14,7 +14,7 @@ class _RecipeBookState extends State<RecipeBook>{
         title: const Text("Книга рецептов"),
       ),
       body: SafeArea(
-        child: RecipesListUI(RecipeModel.demoRecipes),
+        child: RecipesListUI(recipes: RecipeModel.demoRecipes),
       ),
     );
   }

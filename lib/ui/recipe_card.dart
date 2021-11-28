@@ -3,7 +3,7 @@ import 'package:flutproj2/models/recipe_model.dart';
 
 class RecipeCard extends StatefulWidget{
   final RecipeModel recipeModel;
-  RecipeCard(this.recipeModel);
+  RecipeCard({required this.recipeModel});
   @override
   _RecipeCardState createState() => _RecipeCardState();
 }

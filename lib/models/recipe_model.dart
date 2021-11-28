@@ -17,8 +17,9 @@ class RecipeModel{
     required this.imgPath ,
     required this.rating
   });
+  //Возвращает время приготовления в удобном для чтения формате
   String get getDurationString{
-    return time.inHours > 0 ? "${time.inHours} h ${time.inMinutes - Duration.minutesPerHour * time.inHours} m":"${time.inMinutes} m";
+    return time.inHours > 0 ? "${time.inHours} ч ${time.inMinutes - Duration.minutesPerHour * time.inHours} м":"${time.inMinutes} м";
   }
   /*Несколько рецептов, чтобы уже можно было представлять, как всё смотрится.
   Пока на английском, потому что мне такие удобнее взять было, потом все равно будем другими наполнять*/
