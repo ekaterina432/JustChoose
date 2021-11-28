@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutproj2/ui/recipe_card.dart';
 import 'package:flutproj2/models/recipe_model.dart';
 class RecipesListUI extends StatelessWidget{
   List<RecipeModel> recipes;

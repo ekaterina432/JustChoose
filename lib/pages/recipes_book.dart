@@ -1,5 +1,6 @@
+import 'package:flutproj2/models/recipe_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutproj2/ui/recipes_list.dart';
 class RecipeBook extends StatefulWidget{
   const RecipeBook({Key? key}) : super(key: key);
   @override
@@ -13,7 +14,7 @@ class _RecipeBookState extends State<RecipeBook>{
         title: const Text("Книга рецептов"),
       ),
       body: SafeArea(
-        child: const Text("Список рецептов"),
+        child: RecipesListUI(RecipeModel.demoRecipes),
       ),
     );
   }
