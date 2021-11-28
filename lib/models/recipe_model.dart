@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutproj2/models/ingredient_model.dart';
 
 class RecipeModel{
   String title, description;
