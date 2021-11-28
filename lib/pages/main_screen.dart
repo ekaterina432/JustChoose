@@ -33,7 +33,11 @@ class MainScreen extends StatelessWidget {
               ElevatedButton(onPressed: (){
                 Navigator.pushNamed( context, '/todo');
                 },
-                  child: Text('Меню', style: TextStyle(fontSize: 50)))
+                  child: Text('Меню', style: TextStyle(fontSize: 50))),
+              ElevatedButton(onPressed: (){
+                Navigator.pushNamed(context, '/recipes_book');
+              },
+                child: const Text("Книга рецептов")),
             ],
           )
          ],
