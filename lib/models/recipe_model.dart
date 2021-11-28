@@ -17,7 +17,9 @@ class RecipeModel{
     required this.imgPath ,
     required this.rating
   });
-  String get getDurationString => prettyDuration(this.time);
+  String get getDurationString{
+    return time.inHours > 0 ? "${time.inHours} h ${time.inMinutes - Duration.minutesPerHour * time.inHours} m":"${time.inMinutes} m";
+  }
   /*Несколько рецептов, чтобы уже можно было представлять, как всё смотрится.
   Пока на английском, потому что мне такие удобнее взять было, потом все равно будем другими наполнять*/
   static List<RecipeModel> demoRecipes = [

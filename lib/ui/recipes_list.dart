@@ -15,7 +15,7 @@ class RecipesListUI extends StatelessWidget{
       itemBuilder: (BuildContext context, int index){
           return Padding(
             padding: const EdgeInsets.symmetric(
-                horizontal: 12,
+                horizontal: 22,
                 vertical: 12,
             ),
             child: InkWell(
@@ -23,6 +23,6 @@ class RecipesListUI extends StatelessWidget{
             ),
           );
         }
-      );
+    );
   }
 }

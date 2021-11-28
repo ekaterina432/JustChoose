@@ -11,7 +11,6 @@ class _RecipeCardState extends State<RecipeCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
       width: MediaQuery.of(context).size.width,
       height: 180,
       decoration: BoxDecoration(
@@ -41,8 +40,9 @@ class _RecipeCardState extends State<RecipeCard> {
               padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(widget.recipeModel.title,
                 style: const TextStyle(
-                    fontSize: 19,
-                  ),
+                  fontSize: 19,
+                  color: Colors.white70
+                ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 textAlign: TextAlign.center,
@@ -63,9 +63,9 @@ class _RecipeCardState extends State<RecipeCard> {
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.star,color: Colors.yellow,size: 18,),
+                      Icon(Icons.star,color: Theme.of(context).primaryColor,size: 18,),
                       const SizedBox(width: 7),
-                      Text(widget.recipeModel.rating.toString()),
+                      Text(widget.recipeModel.rating.toString(), style: TextStyle(color: Colors.white70),),
                     ],
                   ),
                 ),
@@ -78,9 +78,9 @@ class _RecipeCardState extends State<RecipeCard> {
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.schedule,color: Colors.yellow, size: 18,),
+                      Icon(Icons.schedule,color: Theme.of(context).primaryColor, size: 18,),
                       const SizedBox(width: 7),
-                      Text(widget.recipeModel.getDurationString),
+                      Text(widget.recipeModel.getDurationString, style: TextStyle(color: Colors.white70), ),
                     ],
                   ),
                 )
