@@ -126,8 +126,8 @@ class RecipeDetails extends StatelessWidget{
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Text("Описание"),
-                            Text("Ингридиенты"),
+                            Description(recipeModel: recipeModel),
+                            Ingridients(recipeModel: recipeModel),
                             Text("Шаги"),
                           ],
                         ),
@@ -140,6 +140,59 @@ class RecipeDetails extends StatelessWidget{
           ),
         )
       ),
+    );
+  }
+}
+class Description extends StatelessWidget{
+  RecipeModel recipeModel;
+  Description({required this.recipeModel});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child:Text(recipeModel.description,
+        textAlign: TextAlign.justify,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          height: 1.3,
+        )
+      )
+    );
+  }
+}
+
+class Ingridients extends StatelessWidget{
+  RecipeModel recipeModel;
+  Ingridients({required this.recipeModel});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 5),
+      child: Column(
+        children: [
+          ListView.separated(
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
+            separatorBuilder: (context, index){
+              return Divider(color: Colors.black.withOpacity(0.4));
+            },
+            itemBuilder: (context, index){
+              return Padding(
+                padding: EdgeInsets.only(bottom: 5),
+                child:Row(
+                  children: [
+                    Text(recipeModel.ingredients[index].quantity,
+                      style: TextStyle(fontWeight: FontWeight.w500),),
+                    SizedBox(width: 8,),
+                    Flexible(child: Text(recipeModel.ingredients[index].title, softWrap: true,),)
+                  ],
+                )
+              );
+            },
+            itemCount: recipeModel.ingredients.length
+          )
+        ],
+      )
     );
   }
 }
