@@ -115,7 +115,7 @@ class RecipeDetails extends StatelessWidget{
                             child: Tab(text: "Описание".toUpperCase()),
                           ),
                           Container(
-                            child: Tab(text: "Ингридиенты".toUpperCase()),
+                            child: Tab(text: "Ингредиенты".toUpperCase()),
                           ),
                           Container(
                             child: Tab(text: "Шаги".toUpperCase()),
