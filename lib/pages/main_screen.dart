@@ -6,12 +6,15 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey,
-        appBar: AppBar(
-        title: const Text('JustChoose'),
-        centerTitle: true,
-    ),
-        body: SafeArea(
+        body:  new Stack(
+            children: <Widget>[
+            new Container(
+              decoration: new BoxDecoration(
+              image: new DecorationImage(image: new AssetImage("assets/background.jpg"),
+                fit: BoxFit.cover,),
+              ),
+         ),
+    new Center(
         child:
          Row(
          mainAxisAlignment: MainAxisAlignment.center,
@@ -19,30 +22,44 @@ class MainScreen extends StatelessWidget {
             Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-             Text('Добро пожаловать!', style: TextStyle(
-              fontSize: 20,
-              color: Colors.white),),
-             Padding(padding: EdgeInsets.only(left:10),),
-             Text('user@mail.ru', style: TextStyle(fontSize: 25,color: Colors.white), ),
+              Padding(padding: EdgeInsets.only(top:150),),
+              Text('JustChoose', style: TextStyle(
+               fontFamily: 'Merriweather',
+               fontSize: 50.0,
+               color: Colors.white54),),
              Padding(padding: EdgeInsets.only(top:20),),
              CircleAvatar(
                backgroundImage: AssetImage('assets/logo.jpg'),
                radius: 50,
              ),
-              Padding(padding: EdgeInsets.only(top:50),),
+              Padding(padding: EdgeInsets.only(top:100),),
               ElevatedButton(onPressed: (){
                 Navigator.pushNamed( context, '/todo');
                 },
-                  child: Text('Меню', style: TextStyle(fontSize: 50))),
+                 style: ButtonStyle(
+                 backgroundColor: MaterialStateProperty.all(Colors.white54),
+                 textStyle: MaterialStateProperty.all(TextStyle(fontSize: 30))),
+                  child: Text('Категории', style: TextStyle(
+                    fontSize: 30,
+                    fontFamily: 'Merriweather',
+                    color: Colors.black54))),
+              Padding(padding: EdgeInsets.only(top:20),),
               ElevatedButton(onPressed: (){
                 Navigator.pushNamed(context, '/recipes_book');
-              },
-                child: const Text("Книга рецептов")),
+              },style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white54),
+                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 30))),
+                child: const Text("Книга рецептов", style: TextStyle(
+                    fontSize: 30,
+                    fontFamily: 'Merriweather',
+                    color: Colors.black54))),
             ],
           )
          ],
        )
       )
+    ],
+    )
     );
   }
 }

@@ -6,9 +6,6 @@ import 'package:flutproj2/pages/main_screen.dart';
 import 'package:flutproj2/pages/recipes_book.dart';
 
 void main() => runApp(MaterialApp(
-  theme: ThemeData(//Тема
-    backgroundColor: Colors.blueGrey,
-  ),
   initialRoute: '/',
   routes: {
     '/':(context) => MainScreen(),
