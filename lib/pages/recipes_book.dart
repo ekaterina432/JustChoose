@@ -27,6 +27,7 @@ class _RecipeBookState extends State<RecipeBook>{
         _appBarTitle = Text("Книга рецептов");
         _searchIcon = Icon(Icons.search);
         _isSearching = false;
+        _te_controller.clear();
       });
     } else{
       setState(() {
