@@ -36,7 +36,7 @@ class RecipeDetails extends StatelessWidget{
                               Colors.black.withOpacity(0.35),
                               BlendMode.multiply,
                             ),
-                            image: NetworkImage(recipeModel.imgPath),
+                            image: AssetImage(recipeModel.imgPath),
                           )
                         ),
                       ),
@@ -61,7 +61,7 @@ class RecipeDetails extends StatelessWidget{
             ],
           ),
         ),
-        panel:Padding(
+        panel: Padding(
           padding: EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +128,7 @@ class RecipeDetails extends StatelessWidget{
                           children: [
                             Description(recipeModel: recipeModel),
                             Ingridients(recipeModel: recipeModel),
-                            Text("Шаги"),
+                            Steps(recipeModel: recipeModel),
                           ],
                         ),
                       )
@@ -138,7 +138,7 @@ class RecipeDetails extends StatelessWidget{
               )
             ],
           ),
-        )
+        ),
       ),
     );
   }
@@ -172,7 +172,7 @@ class Ingridients extends StatelessWidget{
         children: [
           ListView.separated(
             shrinkWrap: true,
-            physics: ScrollPhysics(),
+            //physics: ScrollPhysics(),
             separatorBuilder: (context, index){
               return Divider(color: Colors.black.withOpacity(0.4));
             },
@@ -184,7 +184,7 @@ class Ingridients extends StatelessWidget{
                     Text(recipeModel.ingredients[index].quantity,
                       style: TextStyle(fontWeight: FontWeight.w500),),
                     SizedBox(width: 8,),
-                    Flexible(child: Text(recipeModel.ingredients[index].title, softWrap: true,),)
+                    Expanded(child: Text(recipeModel.ingredients[index].title, softWrap: true,),)
                   ],
                 )
               );
@@ -193,6 +193,51 @@ class Ingridients extends StatelessWidget{
           )
         ],
       )
+    );
+  }
+}
+
+class Steps extends StatelessWidget {
+  RecipeModel recipeModel;
+  Steps({required this.recipeModel});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 5),
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics:AlwaysScrollableScrollPhysics(),
+              separatorBuilder: (context, index){
+                return Divider(color: Colors.black.withOpacity(0.4));
+              },
+              itemBuilder: (context, index){
+                return Padding(
+                    padding: EdgeInsets.only(bottom: 6),
+                    child:Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top:5),
+                          child: Container(width: 6, height: 6,
+                            decoration: BoxDecoration(color: Theme.of(context).primaryColor, shape: BoxShape.circle),),
+                        ),
+                        Expanded(child: Text("   " +
+                          recipeModel.steps[index],
+                          softWrap: true,
+                          textAlign: TextAlign.justify,
+                        ),)
+                      ],
+                    )
+                );
+              },
+              itemCount: recipeModel.ingredients.length
+            )
+          )
+        ],
+      ),
     );
   }
 }
