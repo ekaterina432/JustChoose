@@ -34,7 +34,7 @@ class _RecipeCardState extends State<RecipeCard> {
                     Colors.black.withOpacity(0.35),
                     BlendMode.multiply,
                   ),
-                  image: NetworkImage(widget.recipeModel.imgPath),
+                  image: AssetImage(widget.recipeModel.imgPath),
                   fit: BoxFit.cover,
                 ),
               ),
