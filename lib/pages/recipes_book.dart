@@ -7,14 +7,58 @@ class RecipeBook extends StatefulWidget{
   _RecipeBookState createState() => _RecipeBookState();
 }
 class _RecipeBookState extends State<RecipeBook>{
+  Widget _searchIcon = Icon(Icons.search);
+  Widget _appBarTitle = Text("Книга рецептов");
+  final TextEditingController _filter = TextEditingController();
+  bool _isSearching = false;
+
+  void _changeSearchState(){
+    if (_isSearching){
+      setState(() {
+        _appBarTitle = Text("Книга рецептов");
+        _searchIcon = Icon(Icons.search);
+        _isSearching = false;
+      });
+    } else{
+      setState(() {
+        _appBarTitle = Container(
+          width: double.infinity,
+          height: 40,
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5)),
+          child: Center(
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: 'Поищем...',
+                border: InputBorder.none
+              ),
+            ),
+          ),
+        );
+        _searchIcon = Icon(Icons.close);
+        _isSearching = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Книга рецептов"),
+      appBar:
+      AppBar(
+        title: _appBarTitle,
+        actions: [
+          IconButton(
+            onPressed: _changeSearchState,
+            icon: _searchIcon
+          )
+        ],
       ),
       body: SafeArea(
-        child: RecipesListUI(recipes: RecipeModel.demoRecipes),
+        child: Container(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          child: RecipesListUI(recipes: RecipeModel.demoRecipes),
+        ),
       ),
     );
   }
