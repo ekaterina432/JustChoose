@@ -9,9 +9,18 @@ class RecipeBook extends StatefulWidget{
 class _RecipeBookState extends State<RecipeBook>{
   Widget _searchIcon = Icon(Icons.search);
   Widget _appBarTitle = Text("Книга рецептов");
-  final TextEditingController _filter = TextEditingController();
   bool _isSearching = false;
-
+  final TextEditingController _te_controller = TextEditingController();
+  String _filter = "";
+  @override
+  void initState(){
+    super.initState();
+    _te_controller.addListener(() {
+      setState(() {
+        _filter = _te_controller.text;
+      });
+    });
+  }
   void _changeSearchState(){
     if (_isSearching){
       setState(() {
@@ -27,6 +36,7 @@ class _RecipeBookState extends State<RecipeBook>{
           decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5)),
           child: Center(
             child: TextField(
+              controller: _te_controller,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search),
                 hintText: 'Поищем...',
@@ -57,7 +67,7 @@ class _RecipeBookState extends State<RecipeBook>{
       body: SafeArea(
         child: Container(
           color: Theme.of(context).scaffoldBackgroundColor,
-          child: RecipesListUI(recipes: RecipeModel.demoRecipes),
+          child: RecipesListUI(recipes: RecipeModel.demoRecipes.where((element) => element.title.toLowerCase().contains(_filter)).toList()),
         ),
       ),
     );
