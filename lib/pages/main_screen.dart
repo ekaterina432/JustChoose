@@ -53,6 +53,16 @@ class MainScreen extends StatelessWidget {
                     fontSize: 30,
                     fontFamily: 'Merriweather',
                     color: Colors.black54))),
+              Padding(padding: EdgeInsets.only(top:20),),
+              ElevatedButton(onPressed: (){
+                Navigator.pushNamed(context, '/favorites');
+              },style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.white54),
+                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 30))),
+                  child: const Text("Любимые рецепты", style: TextStyle(
+                      fontSize: 30,
+                      fontFamily: 'Merriweather',
+                      color: Colors.black54))),
             ],
           )
          ],

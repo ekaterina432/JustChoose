@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutproj2/models/ingredient_model.dart';
 import 'package:duration/duration.dart';
 class RecipeModel{
-  String title, description;
+  String title, description, id;
   Duration duration;
   int servings;
   List<Ingredient> ingredients;
   List<String> steps;
   String imgPath;
   double rating;
+  bool isFavorite;
   RecipeModel({
+    required this.id,
+    required this.isFavorite,
     required this.title,
     required this.description,
     required this.duration,
@@ -34,6 +37,8 @@ class RecipeModel{
   /*Сюда добавляем рецепты для нулевой версии*/
   static List<RecipeModel> demoRecipes = [
     RecipeModel(
+      id:'1',
+      isFavorite: false,
       title: 'Крабовый салат с креветками',
       description:
       'Красиво, на скорую руку, очень вкусно, на праздничный стол! Крабовый салат с креветками вы приготовите за 30 минут максимум. Кроме майонеза, вы можете заправить его сметаной или натуральным йогуртом, сократив тем самым калорийность. Можете подать его на романтический ужин под белое вино.',
@@ -63,6 +68,8 @@ class RecipeModel{
       ],
     ),
     RecipeModel(
+      id:'2',
+      isFavorite: false,
       title: 'Курица с луком в духовке',
       description:
       'Простой рецепт с минимальным количеством ингредиентов! Приготовление курицы с луком в духовке не займет много времени. Основную работу делает техника, а вам остается наслаждаться готовым сытным и ароматным блюдом!',
@@ -88,6 +95,8 @@ class RecipeModel{
       ],
     ),
     RecipeModel(
+      id:'3',
+      isFavorite: false,
       title: 'Чешский чесночный суп с гренками',
       description:
       'Простой, сытный и ароматный, на скорую руку! Чесночный суп с гренками или чеснечка - это настоящая радость для ценителей чешской национальной кухни и просто для гурманов. Готовится очень быстро! А во время варки по всему дому стоит непередаваемый аромат чеснока и копченостей.',
@@ -122,6 +131,8 @@ class RecipeModel{
       ],
     ),
     RecipeModel(
+      id:'4',
+      isFavorite: false,
       title: 'Классические сырники из творога на сковороде',
       description:
       'Классический рецепт пышных, нежных сырников! Пышные сырники приготовить не так то и просто! Часто они получаются плоскими или непропеченными. Предлагаю вам классический рецепт этой выпечки!',
