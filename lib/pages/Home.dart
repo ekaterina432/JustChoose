@@ -55,7 +55,7 @@ class Home extends StatelessWidget {
                                     color: Colors.black54))),
                             const Padding(padding: EdgeInsets.only(top:20),),
                             ElevatedButton(onPressed: (){
-                              Navigator.pushNamed(context, '/recipes_book');
+                              Navigator.pushNamed(context, '/favorites');
                               },style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(Colors.white70),
                                 textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),

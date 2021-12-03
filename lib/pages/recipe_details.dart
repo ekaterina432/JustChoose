@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutproj2/models/recipe_model.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-class RecipeDetails extends StatelessWidget{
+import 'package:flutproj2/models/favorites_list.dart';
+import 'package:provider/provider.dart';
+
+class RecipeDetails extends StatefulWidget{
+  VoidCallback refreshFavoriteIcon;
   final RecipeModel recipeModel;
-  RecipeDetails({required this.recipeModel});
+  RecipeDetails({required this.recipeModel,required this.refreshFavoriteIcon});
+  @override
+  _RecipeDetailsState createState() =>_RecipeDetailsState();
+}
+class _RecipeDetailsState extends State<RecipeDetails>{
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -25,7 +33,7 @@ class RecipeDetails extends StatelessWidget{
                   Align(
                     alignment: Alignment.topCenter,
                     child: Hero(
-                      tag: recipeModel.imgPath,
+                      tag: widget.recipeModel.imgPath,
                       child: Container(
                         height: size.height/2 + 50,
                         width: double.infinity,
@@ -36,7 +44,7 @@ class RecipeDetails extends StatelessWidget{
                               Colors.black.withOpacity(0.35),
                               BlendMode.multiply,
                             ),
-                            image: AssetImage(recipeModel.imgPath),
+                            image: AssetImage(widget.recipeModel.imgPath),
                           )
                         ),
                       ),
@@ -77,21 +85,40 @@ class RecipeDetails extends StatelessWidget{
                 ),
               ),
               SizedBox(height: 30,),
-              Text(recipeModel.title, style: Theme.of(context).textTheme.headline6,),
+              Text(widget.recipeModel.title, style: Theme.of(context).textTheme.headline6,),
               SizedBox(height: 8,),
               Row(
                 children: [
                   Icon(Icons.star, color: Theme.of(context).primaryColor,),
                   SizedBox(width: 4,),
-                  Text(recipeModel.rating.toString(), style: Theme.of(context).textTheme.subtitle2),
+                  Text(widget.recipeModel.rating.toString(), style: Theme.of(context).textTheme.subtitle2),
                   SizedBox(width: 8,),
                   Icon(Icons.schedule, color: Theme.of(context).primaryColor,),
                   SizedBox(width: 4,),
-                  Text(recipeModel.getDurationString, style: Theme.of(context).textTheme.subtitle2),
+                  Text(widget.recipeModel.getDurationString, style: Theme.of(context).textTheme.subtitle2),
                   SizedBox(width: 8,),
                   Icon(Icons.local_dining, color: Theme.of(context).primaryColor),
                   SizedBox(width: 4,),
-                  Text("${recipeModel.servings} порц.", style: Theme.of(context).textTheme.subtitle2),
+                  Text("${widget.recipeModel.servings} порц.", style: Theme.of(context).textTheme.subtitle2),
+                  Expanded(child: Container(),),
+                  InkWell(
+                    child: Icon(widget.recipeModel.getIsFavorite? Icons.favorite:Icons.favorite_border,
+                      color: Theme.of(context).primaryColor,
+                      size: 32),
+                    onTap: (){
+                      setState(() {
+                        FavoritesModel favorites = context.read<FavoritesModel>();
+                        if (widget.recipeModel.getIsFavorite){
+                          favorites.delete(widget.recipeModel);
+                        }else{
+                          favorites.add(widget.recipeModel);
+                        }
+                        widget.recipeModel.changeIsFavorite();
+                        widget.refreshFavoriteIcon();
+                      });
+                    },
+                  ),
+                  SizedBox(width: 10,),
                 ],
               ),
               SizedBox(height: 8,),
@@ -126,9 +153,9 @@ class RecipeDetails extends StatelessWidget{
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Description(recipeModel: recipeModel),
-                            Ingridients(recipeModel: recipeModel),
-                            Steps(recipeModel: recipeModel),
+                            Description(recipeModel: widget.recipeModel),
+                            Ingridients(recipeModel: widget.recipeModel),
+                            Steps(recipeModel: widget.recipeModel),
                           ],
                         ),
                       )
@@ -170,26 +197,28 @@ class Ingridients extends StatelessWidget{
       padding: EdgeInsets.symmetric(horizontal: 5),
       child: Column(
         children: [
-          ListView.separated(
-            shrinkWrap: true,
-            //physics: ScrollPhysics(),
-            separatorBuilder: (context, index){
-              return Divider(color: Colors.black.withOpacity(0.4));
-            },
-            itemBuilder: (context, index){
-              return Padding(
-                padding: EdgeInsets.only(bottom: 5),
-                child:Row(
-                  children: [
-                    Text(recipeModel.ingredients[index].quantity,
-                      style: TextStyle(fontWeight: FontWeight.w500),),
-                    SizedBox(width: 8,),
-                    Expanded(child: Text(recipeModel.ingredients[index].title, softWrap: true,),)
-                  ],
-                )
-              );
-            },
-            itemCount: recipeModel.ingredients.length
+          Expanded(
+            child: ListView.separated(
+              shrinkWrap: true,
+              //physics: ScrollPhysics(),
+              separatorBuilder: (context, index){
+                return Divider(color: Colors.black.withOpacity(0.4));
+              },
+              itemBuilder: (context, index){
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 5),
+                  child:Row(
+                    children: [
+                      Text(recipeModel.ingredients[index].quantity,
+                        style: TextStyle(fontWeight: FontWeight.w500),),
+                      SizedBox(width: 8,),
+                      Expanded(child: Text(recipeModel.ingredients[index].title, softWrap: true,),)
+                    ],
+                  )
+                );
+              },
+              itemCount: recipeModel.ingredients.length
+            )
           )
         ],
       )
@@ -233,7 +262,7 @@ class Steps extends StatelessWidget {
                     )
                 );
               },
-              itemCount: recipeModel.ingredients.length
+              itemCount: recipeModel.steps.length
             )
           )
         ],
