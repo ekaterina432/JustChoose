@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/recipe_model.dart';
+import 'package:flutproj2/pages/favorites.dart';
+import 'package:provider/provider.dart';
+import 'package:flutproj2/models/favorites_list.dart';
 
 class RecipeCard extends StatefulWidget{
   final RecipeModel recipeModel;
@@ -93,6 +96,33 @@ class _RecipeCardState extends State<RecipeCard> {
             ),
             alignment: Alignment.bottomLeft,
           ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              padding: const EdgeInsets.all(5),
+              margin: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: InkWell(
+                child: Icon(widget.recipeModel.getIsFavorite? Icons.favorite:Icons.favorite_border,
+                  color: Theme.of(context).primaryColor,
+                  size: 24,),
+                onTap: (){
+                  setState(() {
+                    FavoritesModel favorites = context.read<FavoritesModel>();
+                    if (widget.recipeModel.getIsFavorite){
+                      favorites.delete(widget.recipeModel);
+                    }else{
+                      favorites.add(widget.recipeModel);
+                    }
+                    widget.recipeModel.changeIsFavorite();
+                  });
+                },
+              ),
+            )
+          )
         ],
       ),
     );

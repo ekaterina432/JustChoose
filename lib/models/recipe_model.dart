@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/ingredient_model.dart';
 import 'package:duration/duration.dart';
+import 'package:flutproj2/pages/favorites.dart';
+
 class RecipeModel{
   String title, description, id;
   Duration duration;
@@ -9,10 +11,10 @@ class RecipeModel{
   List<String> steps;
   String imgPath;
   double rating;
-  bool isFavorite;
+  bool _isFavorite;
   RecipeModel({
     required this.id,
-    required this.isFavorite,
+    required bool isFavorite,
     required this.title,
     required this.description,
     required this.duration,
@@ -21,7 +23,8 @@ class RecipeModel{
     required this.steps,
     required this.imgPath ,
     required this.rating
-  });
+  }) : _isFavorite = isFavorite;
+
   //Возвращает время приготовления в удобном для чтения формате
   String get getDurationString{
     String res = "";
@@ -32,6 +35,12 @@ class RecipeModel{
       res+=" ${duration.inMinutes - duration.inHours * Duration.minutesPerHour} м";
     }
     return res;
+  }
+
+  bool get getIsFavorite{ return this._isFavorite;}
+
+  void changeIsFavorite(){
+    this._isFavorite = !this._isFavorite;
   }
 
   /*Сюда добавляем рецепты для нулевой версии*/
