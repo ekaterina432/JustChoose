@@ -170,26 +170,28 @@ class Ingridients extends StatelessWidget{
       padding: EdgeInsets.symmetric(horizontal: 5),
       child: Column(
         children: [
-          ListView.separated(
-            shrinkWrap: true,
-            //physics: ScrollPhysics(),
-            separatorBuilder: (context, index){
-              return Divider(color: Colors.black.withOpacity(0.4));
-            },
-            itemBuilder: (context, index){
-              return Padding(
-                padding: EdgeInsets.only(bottom: 5),
-                child:Row(
-                  children: [
-                    Text(recipeModel.ingredients[index].quantity,
-                      style: TextStyle(fontWeight: FontWeight.w500),),
-                    SizedBox(width: 8,),
-                    Expanded(child: Text(recipeModel.ingredients[index].title, softWrap: true,),)
-                  ],
-                )
-              );
-            },
-            itemCount: recipeModel.ingredients.length
+          Expanded(
+            child: ListView.separated(
+              shrinkWrap: true,
+              //physics: ScrollPhysics(),
+              separatorBuilder: (context, index){
+                return Divider(color: Colors.black.withOpacity(0.4));
+              },
+              itemBuilder: (context, index){
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 5),
+                  child:Row(
+                    children: [
+                      Text(recipeModel.ingredients[index].quantity,
+                        style: TextStyle(fontWeight: FontWeight.w500),),
+                      SizedBox(width: 8,),
+                      Expanded(child: Text(recipeModel.ingredients[index].title, softWrap: true,),)
+                    ],
+                  )
+                );
+              },
+              itemCount: recipeModel.ingredients.length
+            )
           )
         ],
       )
@@ -233,7 +235,7 @@ class Steps extends StatelessWidget {
                     )
                 );
               },
-              itemCount: recipeModel.ingredients.length
+              itemCount: recipeModel.steps.length
             )
           )
         ],
