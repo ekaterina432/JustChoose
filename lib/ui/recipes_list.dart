@@ -19,16 +19,7 @@ class RecipesListUI extends StatelessWidget{
                 horizontal: 22,
                 vertical: 12,
             ),
-            child: InkWell(
-              onTap:() => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RecipeDetails(
-                      recipeModel: recipes[index],
-                    ),
-                  )),
-              child: RecipeCard(recipeModel: recipes[index]),
-            ),
+            child: RecipeCard(recipeModel: recipes[index]),
           );
         }
     );
