@@ -6,60 +6,51 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:  new Stack(
+        body:  SafeArea(
+            child:Stack(
             children: <Widget>[
-            new Container(
-              decoration: new BoxDecoration(
-              image: new DecorationImage(image: new AssetImage("assets/background.jpg"),
-                fit: BoxFit.cover,),
-              ),
-         ),
-    new Center(
-        child:
-         Row(
-         mainAxisAlignment: MainAxisAlignment.center,
-         children:[
-            Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(padding: EdgeInsets.only(top:150),),
-              Text('JustChoose', style: TextStyle(
-               fontFamily: 'Merriweather',
-               fontSize: 50.0,
-               color: Colors.white54),),
-             Padding(padding: EdgeInsets.only(top:20),),
-             CircleAvatar(
-               backgroundImage: AssetImage('assets/logo.jpg'),
-               radius: 50,
+             Container(
+               decoration:const  BoxDecoration(
+                 image:  DecorationImage(image:  AssetImage("assets/background.jpg"),
+                   fit: BoxFit.cover,),
+               ),
              ),
-              Padding(padding: EdgeInsets.only(top:100),),
-              ElevatedButton(onPressed: (){
-                Navigator.pushNamed( context, '/todo');
-                },
-                 style: ButtonStyle(
-                 backgroundColor: MaterialStateProperty.all(Colors.white54),
-                 textStyle: MaterialStateProperty.all(TextStyle(fontSize: 30))),
-                  child: Text('Категории', style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: 'Merriweather',
-                    color: Colors.black54))),
-              Padding(padding: EdgeInsets.only(top:20),),
-              ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, '/recipes_book');
-              },style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white54),
-                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 30))),
-                child: const Text("Книга рецептов", style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: 'Merriweather',
-                    color: Colors.black54))),
+              Center(
+                  child:
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Padding(padding: EdgeInsets.only(top:20),),
+                          const Text('JustChoose', style: TextStyle(
+                              fontSize: 45.0,
+                              color: Colors.white54),),
+                          const Padding(padding: EdgeInsets.only(top:20),),
+                          const CircleAvatar(
+                            backgroundImage: AssetImage('assets/logo.jpg'),
+                            radius: 50,
+                          ),
+                          const Padding(padding: EdgeInsets.only(top:100),),
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, '/todo');
+                            },style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(Colors.black54),
+                              textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 30))),
+                              child:
+                              const Text("Sign In with google ", style: TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: 'Roboto-Medium',
+                                  color: Colors.white))),
+                        ],
+                      )
+                    ],
+                  )
+              )
             ],
-          )
-         ],
-       )
-      )
-    ],
-    )
+            )
+        )
     );
   }
 }
