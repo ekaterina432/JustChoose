@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutproj2/categories/baked.dart';
-import 'package:flutproj2/categories/fried_meat.dart';
+
 
 
 class Nothing extends StatefulWidget{
@@ -39,7 +38,7 @@ class _NothingState extends State<Nothing>{
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(Colors.white70),
                               textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
-                          child: const  Text('запеченое', style: TextStyle(
+                          child: const  Text('запеченное', style: TextStyle(
                               fontSize: 25,
                               color: Colors.black54))),
                       const Padding(padding: EdgeInsets.only(top:20),),
@@ -49,7 +48,7 @@ class _NothingState extends State<Nothing>{
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(Colors.white70),
                               textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                          child: const Text("жаренное", style: TextStyle(
+                          child: const Text("жареное", style: TextStyle(
                               fontSize: 20,
                               color: Colors.black54))),
                       const Padding(padding: EdgeInsets.only(top:20),),
