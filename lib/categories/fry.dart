@@ -15,7 +15,7 @@ class _FriedState extends State<Fried>{
     return Scaffold(
       appBar:
       AppBar(
-        title: const Text("Жареное: "),
+        title: const Text("Жареное"),
       ),
       body: SafeArea(
           child:Stack(

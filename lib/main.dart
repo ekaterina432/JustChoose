@@ -34,6 +34,11 @@ void main() => runApp(
         '/firstCourse':(context) => FirstCourse(),
         '/secondCourse':(context) => SecondCourse(),
       },
+      theme: ThemeData(
+        primaryColor: Colors.orange,
+        appBarTheme: AppBarTheme(color: Colors.brown)
+      )
+
     )
   )
 );
