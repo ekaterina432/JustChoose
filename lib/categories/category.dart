@@ -1,4 +1,4 @@
-import 'package:flutproj2/categories/plug.dart';
+import 'package:flutproj2/categories/final.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
 
@@ -58,7 +58,7 @@ class _CategoryState extends State<Category>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: Deserts(), ),
+                                  builder: (context) => Final(category: Deserts(), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -73,7 +73,7 @@ class _CategoryState extends State<Category>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: Snacks(), ),
+                                  builder: (context) => Final(category: Snacks(), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -87,7 +87,7 @@ class _CategoryState extends State<Category>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: Drinks(), ),
+                                  builder: (context) => Final(category: Drinks(), ),
                                 ));
                           },
                               style: ButtonStyle(

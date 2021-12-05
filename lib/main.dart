@@ -30,7 +30,7 @@ void main() => runApp(
         '/favorites':(context) => FavoritesPage(),
         '/friedState':(context) => Fried(),
         '/baked':(context) => Baked(),
-        //'/plug':(context) => Plug(),
+        '/plug':(context) => Plug(),
         '/firstCourse':(context) => FirstCourse(),
         '/secondCourse':(context) => SecondCourse(),
       },

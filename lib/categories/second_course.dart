@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
-import 'package:flutproj2/categories/plug.dart';
+import 'package:flutproj2/categories/final.dart';
 
 
 class SecondCourse extends StatefulWidget{
@@ -37,7 +37,7 @@ class _SecondCourseState extends State<SecondCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: Salads(), ),
+                                  builder: (context) => Final(category: Salads(), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -74,7 +74,7 @@ class _SecondCourseState extends State<SecondCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: Boiled(), ),
+                                  builder: (context) => Final(category: Boiled(), ),
                                 ));
                           },
                               style: ButtonStyle(

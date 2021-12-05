@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutproj2/categories/plug.dart';
+import 'package:flutproj2/categories/final.dart';
 import 'package:flutproj2/models/category_model.dart';
 class Baked extends StatefulWidget{
   const Baked({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class _BakedState extends State<Baked>{
                                 Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: BakedMeat(), ),
+                                  builder: (context) => Final(category: BakedMeat(), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -48,7 +48,7 @@ class _BakedState extends State<Baked>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: BakedSeafood(), ),
+                                  builder: (context) => Final(category: BakedSeafood(), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -62,7 +62,7 @@ class _BakedState extends State<Baked>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: BakedVeget(), ),
+                                  builder: (context) => Final(category: BakedVeget(), ),
                                 ));
                           },
                               style: ButtonStyle(

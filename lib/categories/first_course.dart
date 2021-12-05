@@ -1,7 +1,7 @@
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
-import 'package:flutproj2/categories/plug.dart';
+import 'package:flutproj2/categories/final.dart';
 
 
 class FirstCourse extends StatefulWidget{
@@ -38,7 +38,7 @@ class _FirstCourseState extends State<FirstCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: FirstClassic(), ),
+                                  builder: (context) => Final(category: FirstClassic(), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -52,7 +52,7 @@ class _FirstCourseState extends State<FirstCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: FirstUnusual(), ),
+                                  builder: (context) => Final(category: FirstUnusual(), ),
                                 ));
                           },
                               style: ButtonStyle(

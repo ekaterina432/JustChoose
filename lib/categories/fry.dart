@@ -1,7 +1,7 @@
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
-import 'package:flutproj2/categories/plug.dart';
+import 'package:flutproj2/categories/final.dart';
 
 class Fried extends StatefulWidget{
   const Fried({Key? key}) : super(key: key);
@@ -36,7 +36,7 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: FriedMeat(), ),
+                                  builder: (context) => Final(category: FriedMeat(), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -50,7 +50,7 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: FriedSeafood(), ),
+                                  builder: (context) => Final(category: FriedSeafood(), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -64,7 +64,7 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Plug(category: FriedVeget(), ),
+                                  builder: (context) => Final(category: FriedVeget(), ),
                                 ));
                           },
                               style: ButtonStyle(
