@@ -7,14 +7,12 @@ import 'package:flutproj2/pages/main_screen.dart';
 import 'package:flutproj2/pages/recipes_book.dart';
 import 'package:flutproj2/pages/favorites.dart';
 import 'package:flutproj2/models/favorites_list.dart';
-import 'package:flutproj2/categories/nothing.dart';
 import 'package:flutproj2/products/home_product.dart';
 import 'package:flutproj2/categories/fried_meat.dart';
 import 'package:flutproj2/categories/baked.dart';
 import 'package:flutproj2/categories/category.dart';
-import 'package:flutproj2/categories/category_page.dart';
-import 'package:flutproj2/categories/plug_page.dart';
 import 'package:flutproj2/categories/plug.dart';
+import 'package:flutproj2/categories/second_course.dart';
 
 
 void main() => runApp(
