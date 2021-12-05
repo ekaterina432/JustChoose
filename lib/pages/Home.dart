@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
                                     color: Colors.white))),
                             const Padding(padding: EdgeInsets.only(top:20),),
                             ElevatedButton(onPressed: (){
-                              Navigator.pushNamed(context, '/home_product');
+                              Navigator.pushNamed(context, '/plug');
                               },
                                 style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(Colors.grey),

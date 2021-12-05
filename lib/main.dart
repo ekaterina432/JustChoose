@@ -13,6 +13,8 @@ import 'package:flutproj2/categories/fried_meat.dart';
 import 'package:flutproj2/categories/baked.dart';
 import 'package:flutproj2/categories/category.dart';
 import 'package:flutproj2/categories/category_page.dart';
+import 'package:flutproj2/categories/plug_page.dart';
+import 'package:flutproj2/categories/plug.dart';
 
 
 void main() => runApp(
@@ -29,7 +31,7 @@ void main() => runApp(
         '/favorites':(context) => FavoritesPage(),
         '/friedState':(context) => FriedMeat(),
         '/baked':(context) => Baked(),
-
+        '/plug':(context) => Plug(),
       },
     )
   )

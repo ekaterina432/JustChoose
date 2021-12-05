@@ -40,6 +40,7 @@ class _CategoryState extends State<Category>{
                                   fontSize: 25,
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
+
                           ElevatedButton(onPressed: (){
                             Navigator.pushNamed(context, '/friedState');
                           },
@@ -50,8 +51,9 @@ class _CategoryState extends State<Category>{
                                   fontSize: 25,
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
+
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/friedState');
+                            Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -60,8 +62,9 @@ class _CategoryState extends State<Category>{
                                   fontSize: 25,
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
+
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/friedState');
+                            Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -71,7 +74,7 @@ class _CategoryState extends State<Category>{
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/friedState');
+                            Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
