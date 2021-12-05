@@ -222,7 +222,7 @@ class RecipeModel{
         Ingredient(quantity: "2 шт.", title: "Репчатый лук"),
         Ingredient(quantity: "2 шт.", title: "Морковь"),
         Ingredient(quantity: "50 гр.", title: "Томатная паста"),
-        Ingredient(quantity: "40 мл.", title: "Растительное масло"),
+        Ingredient(quantity: "40 мл", title: "Растительное масло"),
         Ingredient(quantity: "2 шт.", title: "Лавровый лист"),
         Ingredient(quantity: "По вкусу", title: "Соль"),
         Ingredient(quantity: "По вкусу", title: "Чёрный перец молотый"),
