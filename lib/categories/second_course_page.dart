@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class HomeCategory extends StatefulWidget{
-  const HomeCategory({Key? key}) : super(key: key);
+class SecondCoursePage extends StatefulWidget{
+  const SecondCoursePage({Key? key}) : super(key: key);
   @override
-  _HomeCategoryState createState() => _HomeCategoryState();
+  _SecondCoursePageState createState() => _SecondCoursePageState();
 }
-class _HomeCategoryState extends State<HomeCategory>{
+class _SecondCoursePageState extends State<SecondCoursePage>{
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
       AppBar(
-        title: const Text("Выбор по категориям "),
+        title: const Text("Вторые блюда"),
       ),
       body: SafeArea(
         child: Container(

@@ -13,6 +13,7 @@ import 'package:flutproj2/categories/baked.dart';
 import 'package:flutproj2/categories/category.dart';
 import 'package:flutproj2/categories/plug.dart';
 import 'package:flutproj2/categories/second_course.dart';
+import 'package:flutproj2/categories/first_course.dart';
 
 
 void main() => runApp(
@@ -30,6 +31,8 @@ void main() => runApp(
         '/friedState':(context) => FriedMeat(),
         '/baked':(context) => Baked(),
         '/plug':(context) => Plug(),
+        '/firstCourse':(context) => FirstCourse(),
+        '/secondCourse':(context) => SecondCourse(),
       },
     )
   )

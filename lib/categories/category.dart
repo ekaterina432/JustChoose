@@ -31,7 +31,7 @@ class _CategoryState extends State<Category>{
                         children:[
 
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed( context, '/baked');
+                            Navigator.pushNamed( context, '/firstCourse');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -42,7 +42,7 @@ class _CategoryState extends State<Category>{
                           const Padding(padding: EdgeInsets.only(top:20),),
 
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/friedState');
+                            Navigator.pushNamed(context, '/secondCourse');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
