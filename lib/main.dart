@@ -11,6 +11,8 @@ import 'package:flutproj2/categories/nothing.dart';
 import 'package:flutproj2/products/home_product.dart';
 import 'package:flutproj2/categories/fried_meat.dart';
 import 'package:flutproj2/categories/baked.dart';
+import 'package:flutproj2/categories/category.dart';
+import 'package:flutproj2/categories/category_page.dart';
 
 
 void main() => runApp(
@@ -22,11 +24,11 @@ void main() => runApp(
         '/':(context) => MainScreen(),
         '/todo':(context) => Home(),
         '/recipes_book':(context) => RecipeBook(),
-        '/home_category': (context) => Nothing(),
+        '/home_category': (context) => Category(),
         '/home_product': (context) => HomeProduct (),
         '/favorites':(context) => FavoritesPage(),
         '/friedState':(context) => FriedMeat(),
-        '/baked':(context) => Baked (),
+        '/baked':(context) => Baked(),
 
       },
     )
