@@ -36,21 +36,21 @@ class _FirstCourseState extends State<FirstCourse>{
                             Navigator.pushNamed( context, '/plug');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
                               child: const  Text('Классика', style: TextStyle(
                                   fontSize: 25,
-                                  color: Colors.black54))),
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
                             Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
                               child: const Text("Нестандартное", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black54))),
+                                  fontSize: 25,
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                         ]
                     )

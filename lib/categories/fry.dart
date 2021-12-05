@@ -30,34 +30,34 @@ class _FriedState extends State<Fried>{
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed( context, '/nothing');
+                            Navigator.pushNamed( context, '/plug');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
                               child: const  Text('Из мяса и птицы', style: TextStyle(
                                   fontSize: 25,
-                                  color: Colors.black54))),
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/nothing');
+                            Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
                               child: const Text("Из рыбы и морепродуктов", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black54))),
+                                  fontSize: 25,
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/nothing');
+                            Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
                               child: const Text("Из овощей", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black54))),
+                                  fontSize: 25,
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                         ]
                     )

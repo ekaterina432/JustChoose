@@ -36,44 +36,44 @@ class _SecondCourseState extends State<SecondCourse>{
                             Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
                               child: const Text("Салаты", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black54))),
+                                  fontSize: 25,
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
 
                           ElevatedButton(onPressed: (){
                             Navigator.pushNamed( context, '/baked');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
                               child: const  Text('Запеченное', style: TextStyle(
                                   fontSize: 25,
-                                  color: Colors.black54))),
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
 
                           ElevatedButton(onPressed: (){
                             Navigator.pushNamed(context, '/friedState');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
                               child: const Text("Жареное", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black54))),
+                                  fontSize: 25,
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
 
                           ElevatedButton(onPressed: (){
                             Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
                               child: const Text("Вареное", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black54))),
+                                  fontSize: 25,
+                                  color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                         ]
                     )
