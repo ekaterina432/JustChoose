@@ -352,6 +352,29 @@ class RecipeModel{
         "Перекладываем в бокал и заливаем спрайтом.",
         "Декорируем коктейль листиком мяты и лаймом — напиток готов."
       ]
-    )
+    ),
+    RecipeModel(
+    id: '11',
+    isFavorite: false,
+    title: 'Куриная грудка в сметанном соусе',
+    description:
+    'Так запеченная курица получается очень мягкой и совсем не сухой.',
+    duration: const Duration(hours: 1 minutes: 20),
+    servings: 1,
+    rating: 4.7,
+    imgPath: 'assets/demo_recipe11.jpg',
+    ingredients: [
+    Ingredient(quantity: "500 гр.", title: "Куриное филе"),
+    Ingredient(quantity: "половина", title: "болгарский перец"),
+    Ingredient(quantity: "50 гр.", title: "сыр"),
+    Ingredient(quantity: "щипотка", title: "Специи"),
+    Ingredient(quantity: "200 гр.", title: "Сметана"),
+    Ingredient(quantity: "4", title: "Зубчика чеснока"),
+    Ingredient(quantity: "1 ст.л.", title: "Лимонный сок")
+    ],
+    steps: [
+    "Промой филе, сделай несколько надрезов и обваляй курицу в специях.",
+    "В надрезы вложи полосочки перца и отправь курицу в форму.",
+    "Смешай сметану, лимонный сок, измельченный чеснок и специи по вкусу, залей курицу, присыпь сыром и выпекай около 40 минут при 180 градусах."
   ];
 }
