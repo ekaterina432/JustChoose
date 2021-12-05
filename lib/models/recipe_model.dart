@@ -344,7 +344,7 @@ class RecipeModel{
     RecipeModel(
       id: '10',
       isFavorite: false,
-      title: 'Безалкогольное мохито',
+      title: 'Безалкогольный мохито',
       category: Drinks(),
       description:
       'Это один из самых классических рецептов безалкогольного мохито, который очень освежает в жару.',
@@ -379,9 +379,9 @@ class RecipeModel{
       imgPath: 'assets/demo_recipe11.jpg',
       ingredients: [
       Ingredient(quantity: "500 гр.", title: "Куриное филе"),
-      Ingredient(quantity: "половина", title: "болгарский перец"),
-      Ingredient(quantity: "50 гр.", title: "сыр"),
-      Ingredient(quantity: "щипотка", title: "Специи"),
+      Ingredient(quantity: "Половина", title: "Болгарский перец"),
+      Ingredient(quantity: "50 гр.", title: "Сыр"),
+      Ingredient(quantity: "Щепотка", title: "Специи"),
       Ingredient(quantity: "200 гр.", title: "Сметана"),
       Ingredient(quantity: "4", title: "Зубчика чеснока"),
       Ingredient(quantity: "1 ст.л.", title: "Лимонный сок")
@@ -405,8 +405,8 @@ class RecipeModel{
     imgPath: 'assets/demo_recipe12.jpg',
     ingredients: [
     Ingredient(quantity: "3 ломтика", title: "Белый хлеб"),
-    Ingredient(quantity: "6 полосок", title: "бекон"),
-    Ingredient(quantity: "50 гр.", title: "сливочное масло"),
+    Ingredient(quantity: "6 полосок", title: "Бекон"),
+    Ingredient(quantity: "50 гр.", title: "Сливочное масло"),
     Ingredient(quantity: "100 гр.", title: "Сыр"),
     Ingredient(quantity: "3", title: "Помидора"),
     ],
@@ -429,11 +429,11 @@ class RecipeModel{
     imgPath: 'assets/demo_recipe13.jpg',
     ingredients: [
     Ingredient(quantity: "5 ломтика", title: "Белый хлеб"),
-    Ingredient(quantity: "80 гр.", title: "вареная колбаса без жира"),
-    Ingredient(quantity: "несколько веточек", title: "зелень"),
-    Ingredient(quantity: "1 ч.л.", title: "майонез"),
-    Ingredient(quantity: "1 ч.л.", title: "томатная паста"),
-    Ingredient(quantity: "50 гр.", title: "твердый сыр"),
+    Ingredient(quantity: "80 гр.", title: "Вареная колбаса без жира"),
+    Ingredient(quantity: "Несколько веточек", title: "Зелень"),
+    Ingredient(quantity: "1 ч.л.", title: "Майонез"),
+    Ingredient(quantity: "1 ч.л.", title: "Томатная паста"),
+    Ingredient(quantity: "50 гр.", title: "Твердый сыр"),
     ],
     steps: [
     "Колбасу режем мелкими кубиками.",
