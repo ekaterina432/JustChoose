@@ -344,7 +344,7 @@ class RecipeModel{
     RecipeModel(
       id: '10',
       isFavorite: false,
-      title: 'Безалкогольное мохито',
+      title: 'Безалкогольный мохито',
       category: Drinks(),
       description:
       'Это один из самых классических рецептов безалкогольного мохито, который очень освежает в жару.',
