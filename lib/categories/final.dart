@@ -25,10 +25,6 @@ class _FinalState extends State<Final>{
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image:  DecorationImage(image: AssetImage("assets/background.jpg"),
-                      fit: BoxFit.cover,),
-                  ),
                   child: RecipesListUI(
                       recipes: RecipeModel.demoRecipes.where((element) => element.category.runtimeType == type).toList()
                   )

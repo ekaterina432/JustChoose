@@ -57,9 +57,6 @@ class _RecipeBookState extends State<RecipeBook>{
     return Scaffold(
       appBar:
       AppBar(
-        shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30),)
-        ),
         title: _appBarTitle,
         actions: [
           IconButton(

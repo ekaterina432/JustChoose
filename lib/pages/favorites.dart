@@ -18,9 +18,6 @@ class _FavoritesPageState extends State<FavoritesPage>{
     FavoritesModel favorites = context.watch<FavoritesModel>();
     return Scaffold(
       appBar: AppBar(
-        shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30),)
-        ),
         title: Text("Любимые рецепты"),
         actions: [
           Icon(Icons.favorite, color: Colors.white,),
