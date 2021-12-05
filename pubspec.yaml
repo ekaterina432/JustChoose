@@ -78,6 +78,8 @@ flutter:
      - assets/demo_recipe9.jpg
      - assets/demo_recipe10.jpg
      - assets/demo_recipe11.jpg
+     - assets/demo_recipe12.jpg
+     - assets/demo_recipe13.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
