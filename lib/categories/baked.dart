@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutproj2/categories/plug.dart';
+import 'package:flutproj2/models/category_model.dart';
 class Baked extends StatefulWidget{
   const Baked({Key? key}) : super(key: key);
   @override
@@ -30,7 +31,11 @@ class _BakedState extends State<Baked>{
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed( context, '/plug');
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: BakedMeat(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -40,7 +45,11 @@ class _BakedState extends State<Baked>{
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: BakedSeafood(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -50,7 +59,11 @@ class _BakedState extends State<Baked>{
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: BakedVeget(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),

@@ -1,5 +1,7 @@
+import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutproj2/models/category_model.dart';
+import 'package:flutproj2/categories/plug.dart';
 
 
 class FirstCourse extends StatefulWidget{
@@ -33,7 +35,11 @@ class _FirstCourseState extends State<FirstCourse>{
                         children:[
 
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed( context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: FirstClassic(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -43,7 +49,11 @@ class _FirstCourseState extends State<FirstCourse>{
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: FirstUnusual(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),

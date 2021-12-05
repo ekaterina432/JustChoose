@@ -1,4 +1,7 @@
+import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutproj2/models/category_model.dart';
+import 'package:flutproj2/categories/plug.dart';
 
 class Fried extends StatefulWidget{
   const Fried({Key? key}) : super(key: key);
@@ -30,7 +33,11 @@ class _FriedState extends State<Fried>{
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed( context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: FriedMeat(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -40,7 +47,11 @@ class _FriedState extends State<Fried>{
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: FriedSeafood(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -50,7 +61,11 @@ class _FriedState extends State<Fried>{
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: FriedVeget(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),

@@ -1,11 +1,14 @@
+import 'package:flutproj2/categories/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/ingredient_model.dart';
 import 'package:duration/duration.dart';
 import 'package:flutproj2/pages/favorites.dart';
+import 'package:flutproj2/models/category_model.dart';
 
 class RecipeModel{
   String title, description, id;
   Duration duration;
+  CategoryModel category;
   int servings;
   List<Ingredient> ingredients;
   List<String> steps;
@@ -14,6 +17,7 @@ class RecipeModel{
   bool _isFavorite;
   RecipeModel({
     required this.id,
+    required this.category,
     required bool isFavorite,
     required this.title,
     required this.description,
@@ -49,6 +53,7 @@ class RecipeModel{
       id:'1',
       isFavorite: false,
       title: 'Крабовый салат с креветками',
+      category: Salads(),
       description:
       'Красиво, на скорую руку, очень вкусно, на праздничный стол! Крабовый салат с креветками вы приготовите за 30 минут максимум. Кроме майонеза, вы можете заправить его сметаной или натуральным йогуртом, сократив тем самым калорийность. Можете подать его на романтический ужин под белое вино.',
       duration: const Duration(minutes: 30),
@@ -80,6 +85,7 @@ class RecipeModel{
       id:'2',
       isFavorite: false,
       title: 'Курица с луком в духовке',
+      category: BakedMeat(),
       description:
       'Простой рецепт с минимальным количеством ингредиентов! Приготовление курицы с луком в духовке не займет много времени. Основную работу делает техника, а вам остается наслаждаться готовым сытным и ароматным блюдом!',
       duration: const Duration(hours: 2, minutes: 10),
@@ -107,6 +113,7 @@ class RecipeModel{
       id:'3',
       isFavorite: false,
       title: 'Чешский чесночный суп с гренками',
+      category: FirstUnusual(),
       description:
       'Простой, сытный и ароматный, на скорую руку! Чесночный суп с гренками или чеснечка - это настоящая радость для ценителей чешской национальной кухни и просто для гурманов. Готовится очень быстро! А во время варки по всему дому стоит непередаваемый аромат чеснока и копченостей.',
       duration: const Duration(hours: 1, minutes: 20),
@@ -143,6 +150,7 @@ class RecipeModel{
       id:'4',
       isFavorite: false,
       title: 'Классические сырники из творога на сковороде',
+      category: Deserts(),
       description:
       'Классический рецепт пышных, нежных сырников! Пышные сырники приготовить не так то и просто! Часто они получаются плоскими или непропеченными. Предлагаю вам классический рецепт этой выпечки!',
       duration: const Duration(minutes: 30),
@@ -174,6 +182,7 @@ class RecipeModel{
     ),
     RecipeModel(
       title: 'Котлеты по киевски',
+      category: FriedMeat(),
       id:'5',
       isFavorite: false,
       description:
@@ -207,6 +216,7 @@ class RecipeModel{
       id:'6',
       isFavorite: false,
       title: 'Солянка с копчёностями',
+      category: FirstUnusual(),
       description:
       'Приготовить солянку стоит уже ради того, чтобы почувствовать этот умопомрачительный запах, который пробуждает аппетит и острое желание съесть и свою, и чужую порцию. Благо, наш рецепт рассчитан на целых 8 порций, так что вы вполне можете взять себе добавку!',
       duration: const Duration(hours: 1, minutes: 40),

@@ -14,7 +14,7 @@ import 'package:flutproj2/categories/category.dart';
 import 'package:flutproj2/categories/plug.dart';
 import 'package:flutproj2/categories/second_course.dart';
 import 'package:flutproj2/categories/first_course.dart';
-
+import 'package:flutproj2/models/category_model.dart';
 
 void main() => runApp(
   ChangeNotifierProvider(
@@ -30,7 +30,7 @@ void main() => runApp(
         '/favorites':(context) => FavoritesPage(),
         '/friedState':(context) => Fried(),
         '/baked':(context) => Baked(),
-        '/plug':(context) => Plug(),
+        //'/plug':(context) => Plug(),
         '/firstCourse':(context) => FirstCourse(),
         '/secondCourse':(context) => SecondCourse(),
       },

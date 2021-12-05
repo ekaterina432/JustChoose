@@ -1,3 +1,5 @@
+import 'package:flutproj2/categories/plug.dart';
+import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
 
 class Category extends StatefulWidget{
@@ -53,7 +55,11 @@ class _CategoryState extends State<Category>{
                           const Padding(padding: EdgeInsets.only(top:20),),
 
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: Deserts(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -64,7 +70,11 @@ class _CategoryState extends State<Category>{
                           const Padding(padding: EdgeInsets.only(top:20),),
 
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: Snacks(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -74,7 +84,11 @@ class _CategoryState extends State<Category>{
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: Drinks(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),

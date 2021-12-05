@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutproj2/models/category_model.dart';
+import 'package:flutproj2/categories/plug.dart';
 
 
 class SecondCourse extends StatefulWidget{
@@ -33,7 +34,11 @@ class _SecondCourseState extends State<SecondCourse>{
                         children:[
 
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: Salads(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -66,7 +71,11 @@ class _SecondCourseState extends State<SecondCourse>{
                           const Padding(padding: EdgeInsets.only(top:20),),
 
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Plug(category: Boiled(), ),
+                                ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
