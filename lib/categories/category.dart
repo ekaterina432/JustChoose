@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Fried extends StatefulWidget{
-  const Fried({Key? key}) : super(key: key);
+class Category extends StatefulWidget{
+  const Category({Key? key}) : super(key: key);
   @override
-  _FriedState createState() => _FriedState();
+  _CategoryState createState() => _CategoryState();
 }
-class _FriedState extends State<Fried>{
+class _CategoryState extends State<Category>{
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
       AppBar(
-        title: const Text("Жареное: "),
+        title: const Text("Выбор по категориям "),
       ),
       body: SafeArea(
           child:Stack(
@@ -29,13 +29,47 @@ class _FriedState extends State<Fried>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
+
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed( context, '/plug');
+                            Navigator.pushNamed( context, '/firstCourse');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
-                              child: const  Text('Из мяса и птицы', style: TextStyle(
+                              child: const  Text('Первое блюдо', style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white))),
+                          const Padding(padding: EdgeInsets.only(top:20),),
+
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, '/secondCourse');
+                          },
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
+                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
+                              child: const Text("Второе блюдо", style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white))),
+                          const Padding(padding: EdgeInsets.only(top:20),),
+
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, '/plug');
+                          },
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
+                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
+                              child: const Text("Десерты", style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white))),
+                          const Padding(padding: EdgeInsets.only(top:20),),
+
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, '/plug');
+                          },
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
+                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
+                              child: const Text("Закуски", style: TextStyle(
                                   fontSize: 25,
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -45,17 +79,7 @@ class _FriedState extends State<Fried>{
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Из рыбы и морепродуктов", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
-                          const Padding(padding: EdgeInsets.only(top:20),),
-                          ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
-                          },
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Из овощей", style: TextStyle(
+                              child: const Text("Напитки", style: TextStyle(
                                   fontSize: 25,
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),

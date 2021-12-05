@@ -28,40 +28,40 @@ class Home extends StatelessWidget {
                               Navigator.pushNamed( context, '/recipes_book');
                               },
                                 style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                    backgroundColor: MaterialStateProperty.all(Colors.grey),
                                     textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
-                                child: const  Text('книга рецептов', style: TextStyle(
+                                child: const  Text('Книга рецептов', style: TextStyle(
                                     fontSize: 25,
-                                    color: Colors.black54))),
+                                    color: Colors.white))),
                             const Padding(padding: EdgeInsets.only(top:20),),
                             ElevatedButton(onPressed: (){
                               Navigator.pushNamed(context, '/home_category');
                               },
                                 style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                backgroundColor: MaterialStateProperty.all(Colors.grey),
                                     textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                                child: const Text("выбор по категориям", style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black54))),
+                                child: const Text("Выбор по категориям", style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white))),
                             const Padding(padding: EdgeInsets.only(top:20),),
                             ElevatedButton(onPressed: (){
-                              Navigator.pushNamed(context, '/home_product');
+                              Navigator.pushNamed(context, '/plug');
                               },
                                 style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                backgroundColor: MaterialStateProperty.all(Colors.grey),
                                     textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                                child: const Text("выбор по продуктам", style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black54))),
+                                child: const Text("Выбор по продуктам", style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white))),
                             const Padding(padding: EdgeInsets.only(top:20),),
                             ElevatedButton(onPressed: (){
                               Navigator.pushNamed(context, '/favorites');
                               },style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(Colors.white70),
+                                backgroundColor: MaterialStateProperty.all(Colors.grey),
                                 textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                                child: const Text("избранное", style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black54))),
+                                child: const Text("Избранное", style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white))),
                           ]
                       )
                   )

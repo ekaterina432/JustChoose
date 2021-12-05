@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Fried extends StatefulWidget{
-  const Fried({Key? key}) : super(key: key);
+
+
+class SecondCourse extends StatefulWidget{
+  const SecondCourse({Key? key}) : super(key: key);
   @override
-  _FriedState createState() => _FriedState();
+  _SecondCourseState createState() => _SecondCourseState();
 }
-class _FriedState extends State<Fried>{
+class _SecondCourseState extends State<SecondCourse>{
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
       AppBar(
-        title: const Text("Жареное: "),
+        title: const Text("Второе блюдо"),
       ),
       body: SafeArea(
           child:Stack(
@@ -29,33 +31,47 @@ class _FriedState extends State<Fried>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
+
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed( context, '/plug');
+                            Navigator.pushNamed(context, '/plug');
+                          },
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
+                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
+                              child: const Text("Салаты", style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white))),
+                          const Padding(padding: EdgeInsets.only(top:20),),
+
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed( context, '/baked');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
-                              child: const  Text('Из мяса и птицы', style: TextStyle(
+                              child: const  Text('Запеченное', style: TextStyle(
                                   fontSize: 25,
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
+
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, '/friedState');
+                          },
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
+                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
+                              child: const Text("Жареное", style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white))),
+                          const Padding(padding: EdgeInsets.only(top:20),),
+
                           ElevatedButton(onPressed: (){
                             Navigator.pushNamed(context, '/plug');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Из рыбы и морепродуктов", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
-                          const Padding(padding: EdgeInsets.only(top:20),),
-                          ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/plug');
-                          },
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Из овощей", style: TextStyle(
+                              child: const Text("Вареное", style: TextStyle(
                                   fontSize: 25,
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
