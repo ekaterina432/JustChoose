@@ -135,6 +135,7 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                         unselectedLabelColor: Colors.black.withOpacity(0.3),
                         labelPadding: EdgeInsets.symmetric(horizontal: 0),
                         indicator: DotIndicator (
+                          color: Theme.of(context).primaryColor,
                           distanceFromCenter: 15,
                         ),
                         tabs: [

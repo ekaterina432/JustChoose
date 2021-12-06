@@ -63,26 +63,29 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/logo.jpg
-     - assets/g-logo.jpg
-     - assets/background.jpg
-     - assets/background_home.jpg
-     - assets/demo_recipe1.jpg
-     - assets/demo_recipe2.jpg
-     - assets/demo_recipe3.jpg
-     - assets/demo_recipe4.jpg
-     - assets/demo_recipe5.jpg
-     - assets/demo_recipe6.jpg
-     - assets/demo_recipe7.jpg
-     - assets/demo_recipe8.jpg
-     - assets/demo_recipe9.jpg
-     - assets/demo_recipe10.jpg
-     - assets/demo_recipe11.jpg
-     - assets/demo_recipe12.jpg
-     - assets/demo_recipe13.jpg
-     - assets/demo_recipe14.jpg
-     - assets/demo_recipe15.jpg
-
+    - assets/logo.jpg
+    - assets/g-logo.jpg
+    - assets/background.jpg
+    - assets/background_home.jpg
+    - assets/demo_recipe1.jpg
+    - assets/demo_recipe2.jpg
+    - assets/demo_recipe3.jpg
+    - assets/demo_recipe4.jpg
+    - assets/demo_recipe5.jpg
+    - assets/demo_recipe6.jpg
+    - assets/demo_recipe7.jpg
+    - assets/demo_recipe8.jpg
+    - assets/demo_recipe9.jpg
+    - assets/demo_recipe10.jpg
+    - assets/demo_recipe11.jpg
+    - assets/demo_recipe12.jpg
+    - assets/demo_recipe13.jpg
+    - assets/demo_recipe14.jpg
+    - assets/demo_recipe15.jpg
+    - assets/demo_recipe16.jpg
+    - assets/demo_recipe17.jpg
+    - assets/demo_recipe18.jpg
+    - assets/demo_recipe19.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
