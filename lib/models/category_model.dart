@@ -16,8 +16,13 @@ class SecondCourseModel extends CategoryModel{} // Второе блюдо
     class FriedSeafood extends FriedModel{} // Морепродукты
     class FriedVeget extends FriedModel{} // Овощи
   class Boiled extends SecondCourseModel{} // Вареное
+
 class Deserts extends CategoryModel{} // Десерты
+
 class Snacks extends CategoryModel{} // Закуски
   class HotSnacks extends Snacks{} // Горячие
   class ColdSnacks extends Snacks{} // Холодные
+
 class Drinks extends CategoryModel{} // Напитки
+  class HotDrinks extends Drinks{} // Горячие
+  class ColdDrinks extends Drinks{} // Холодные
