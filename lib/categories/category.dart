@@ -70,11 +70,7 @@ class _CategoryState extends State<Category>{
                           const Padding(padding: EdgeInsets.only(top:20),),
 
                           ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Final(category: Snacks(), ),
-                                ));
+                            Navigator.pushNamed(context, '/snacks');
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),

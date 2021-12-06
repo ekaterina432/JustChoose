@@ -18,4 +18,6 @@ class SecondCourseModel extends CategoryModel{} // Второе блюдо
   class Boiled extends SecondCourseModel{} // Вареное
 class Deserts extends CategoryModel{} // Десерты
 class Snacks extends CategoryModel{} // Закуски
+  class HotSnacks extends Snacks{} // Горячие
+  class ColdSnacks extends Snacks{} // Холодные
 class Drinks extends CategoryModel{} // Напитки

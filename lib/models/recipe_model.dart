@@ -396,7 +396,7 @@ class RecipeModel{
     id: '12',
     isFavorite: false,
     title: 'Канапе с беконом и сыром на шпажках',
-    category: Snacks(),
+    category: ColdSnacks(),
     description:
     'Такие канапе тоже лучше подогреть в духовке или микроволновке буквально пару минут.',
     duration: const Duration(minutes: 25),
@@ -420,7 +420,7 @@ class RecipeModel{
     id: '13',
     isFavorite: false,
     title: 'Горячие бутерброды "Минутка" ',
-    category: Snacks(),
+    category: HotSnacks(),
     description:
     'горячие бутерброды – это беспроигрышный вариант, когда готовить некогда, не хочется или вот-вот нагрянут гости.',
     duration: const Duration(minutes: 20),
