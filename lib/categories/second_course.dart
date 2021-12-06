@@ -80,7 +80,7 @@ class _SecondCourseState extends State<SecondCourse>{
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
                                   textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Вареное", style: TextStyle(
+                              child: const Text("Вареное и гарниры", style: TextStyle(
                                   fontSize: 25,
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
