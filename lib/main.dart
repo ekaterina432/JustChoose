@@ -17,6 +17,7 @@ import 'package:flutproj2/categories/first_course.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutproj2/categories/snacks.dart';
 import 'package:flutproj2/categories/drinks.dart';
+import 'package:flutproj2/categories/deserts.dart';
 
 void main() => runApp(
   ChangeNotifierProvider(
@@ -37,6 +38,7 @@ void main() => runApp(
         '/secondCourse':(context) => SecondCourse(),
         '/snacks':(context) => Snack(),
         '/drinks':(context) => Drink(),
+        '/deserts':(context) => Desert(),
       },
       theme: ThemeData(
         primaryColor: Colors.orange,

@@ -18,6 +18,9 @@ class SecondCourseModel extends CategoryModel{} // Второе блюдо
   class Boiled extends SecondCourseModel{} // Вареное
 
 class Deserts extends CategoryModel{} // Десерты
+  class FriedDeserts extends Deserts{} // На сковородке
+  class BakedDeserts extends Deserts{} // В духовке
+  class NoTermDeserts extends Deserts{} // Без выпечки и жарки
 
 class Snacks extends CategoryModel{} // Закуски
   class HotSnacks extends Snacks{} // Горячие
