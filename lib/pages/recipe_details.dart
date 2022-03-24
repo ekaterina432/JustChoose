@@ -204,7 +204,7 @@ class Ingridients extends StatelessWidget{
       child: Column(
         children: [
           Expanded(
-            child: ListView.separated(
+            child:ListView.separated(
               shrinkWrap: true,
               //physics: ScrollPhysics(),
               separatorBuilder: (context, index){

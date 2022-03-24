@@ -95,7 +95,6 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
           _fetchFirebaseData();
           print('scrollend' + _data.length.toString());
         }
-
         return true;
       },
     );

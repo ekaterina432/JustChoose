@@ -47,6 +47,8 @@ void main() async {
         },
         theme: ThemeData(
           primaryColor: Colors.orange,
+            colorScheme: ColorScheme.fromSwatch()
+                .copyWith(secondary: Colors.orange),
           appBarTheme: AppBarTheme(color: Colors.brown)
         )
       )
