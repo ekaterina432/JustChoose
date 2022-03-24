@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Ingredient{
-  String quantity, title;
+  String quantity, name;
   Ingredient({
     required this.quantity,
-    required this.title,
+    required this.name,
   });
 }

@@ -5,9 +5,12 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:flutproj2/models/favorites_list.dart';
 import 'package:provider/provider.dart';
 
+import '../models/ingredient_model.dart';
+import '../models/recipe_model_db.dart';
+
 class RecipeDetails extends StatefulWidget{
   VoidCallback refreshFavoriteIcon;
-  final RecipeModel recipeModel;
+  final RecipeModelDB recipeModel;
   RecipeDetails({required this.recipeModel,required this.refreshFavoriteIcon});
   @override
   _RecipeDetailsState createState() =>_RecipeDetailsState();
@@ -16,6 +19,7 @@ class _RecipeDetailsState extends State<RecipeDetails>{
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    widget.recipeModel.getFullData();
     return Scaffold(
       body: SlidingUpPanel(
         minHeight: size.height/2,
@@ -44,7 +48,7 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                               Colors.black.withOpacity(0.35),
                               BlendMode.multiply,
                             ),
-                            image: AssetImage(widget.recipeModel.imgPath),
+                            image: NetworkImage(widget.recipeModel.imgPath),
                           )
                         ),
                       ),
@@ -85,7 +89,7 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                 ),
               ),
               SizedBox(height: 30,),
-              Text(widget.recipeModel.title, style: Theme.of(context).textTheme.headline6,),
+              Text(widget.recipeModel.name, style: Theme.of(context).textTheme.headline6,),
               SizedBox(height: 8,),
               Row(
                 children: [
@@ -105,18 +109,18 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                     child: Icon(widget.recipeModel.getIsFavorite? Icons.favorite:Icons.favorite_border,
                       color: Theme.of(context).primaryColor,
                       size: 32),
-                    onTap: (){
-                      setState(() {
-                        FavoritesModel favorites = context.read<FavoritesModel>();
-                        if (widget.recipeModel.getIsFavorite){
-                          favorites.delete(widget.recipeModel);
-                        }else{
-                          favorites.add(widget.recipeModel);
-                        }
-                        widget.recipeModel.changeIsFavorite();
-                        widget.refreshFavoriteIcon();
-                      });
-                    },
+                    // onTap: (){
+                    //   setState(() {
+                    //     FavoritesModel favorites = context.read<FavoritesModel>();
+                    //     if (widget.recipeModel.getIsFavorite){
+                    //       favorites.delete(widget.recipeModel);
+                    //     }else{
+                    //       favorites.add(widget.recipeModel);
+                    //     }
+                    //     widget.recipeModel.changeIsFavorite();
+                    //     widget.refreshFavoriteIcon();
+                    //   });
+                    // },
                   ),
                   SizedBox(width: 10,),
                 ],
@@ -154,9 +158,9 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Description(recipeModel: widget.recipeModel),
-                            Ingridients(recipeModel: widget.recipeModel),
-                            Steps(recipeModel: widget.recipeModel),
+                            Description(description: widget.recipeModel.description),
+                            Ingridients(ingredients: widget.recipeModel.ingredients),
+                            Steps(steps: widget.recipeModel.steps),
                           ],
                         ),
                       )
@@ -172,13 +176,13 @@ class _RecipeDetailsState extends State<RecipeDetails>{
   }
 }
 class Description extends StatelessWidget{
-  RecipeModel recipeModel;
-  Description({required this.recipeModel});
+  String description;
+  Description({required this.description});
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10),
-      child:Text(recipeModel.description,
+      child:Text(description,
         textAlign: TextAlign.justify,
         style: TextStyle(
           fontWeight: FontWeight.w500,
@@ -190,8 +194,9 @@ class Description extends StatelessWidget{
 }
 
 class Ingridients extends StatelessWidget{
-  RecipeModel recipeModel;
-  Ingridients({required this.recipeModel});
+  List<Ingredient> ingredients;
+  Ingridients({required this.ingredients});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -210,15 +215,15 @@ class Ingridients extends StatelessWidget{
                   padding: EdgeInsets.only(bottom: 5),
                   child:Row(
                     children: [
-                      Text(recipeModel.ingredients[index].quantity,
+                      Text(ingredients[index].quantity,
                         style: TextStyle(fontWeight: FontWeight.w500),),
                       SizedBox(width: 8,),
-                      Expanded(child: Text(recipeModel.ingredients[index].title, softWrap: true,),)
+                      Expanded(child: Text(ingredients[index].name, softWrap: true,),)
                     ],
                   )
                 );
               },
-              itemCount: recipeModel.ingredients.length
+              itemCount: ingredients.length
             )
           )
         ],
@@ -228,8 +233,8 @@ class Ingridients extends StatelessWidget{
 }
 
 class Steps extends StatelessWidget {
-  RecipeModel recipeModel;
-  Steps({required this.recipeModel});
+  List<String> steps;
+  Steps({required this.steps});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -255,7 +260,7 @@ class Steps extends StatelessWidget {
                             decoration: BoxDecoration(color: Theme.of(context).primaryColor, shape: BoxShape.circle),),
                         ),
                         Expanded(child: Text("   " +
-                          recipeModel.steps[index],
+                          steps[index],
                           softWrap: true,
                           textAlign: TextAlign.justify,
                         ),)
@@ -263,7 +268,7 @@ class Steps extends StatelessWidget {
                     )
                 );
               },
-              itemCount: recipeModel.steps.length
+              itemCount: steps.length
             )
           )
         ],

@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/recipe_model_db.dart';
+import 'package:flutproj2/ui/recipe_card_db.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/ui/recipe_card.dart';
-import 'package:flutproj2/models/recipe_model_db.dart.dart';
+import 'package:flutproj2/models/recipe_model_db.dart';
 import 'package:flutproj2/pages/recipe_details.dart';
 
 class RecipesListUIDB extends StatefulWidget{
@@ -13,7 +14,7 @@ class RecipesListUIDB extends StatefulWidget{
 }
 
 class _RecipesListUIDB extends State<RecipesListUIDB>{
-  static const PAGE_SIZE = 15;
+  static const PAGE_SIZE = 12;
   bool _allFetched = false;
   bool _isLoading = false;
   List<RecipeModelDB> _data = [];
@@ -74,7 +75,7 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
               width: double.infinity,
               height: 60,
               child: Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(color: Theme.of(context).primaryColor),
               ),
             );
           }
@@ -84,15 +85,17 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
               horizontal: 22,
               vertical: 12,
             ),
-            child: RecipeCard(recipeModel: item),
+            child: RecipeCardDB(recipeModel: item),
           );
         },
         itemCount: _data.length + (_allFetched ? 0 : 1),
       ),
       onNotification: (scrollEnd) {
-        //if (scrollEnd.metrics.atEdge && scrollEnd.metrics.pixels > 0) {
+        if (scrollEnd.metrics.atEdge && scrollEnd.metrics.pixels > 0) {
           _fetchFirebaseData();
-        //}
+          print('scrollend' + _data.length.toString());
+        }
+
         return true;
       },
     );

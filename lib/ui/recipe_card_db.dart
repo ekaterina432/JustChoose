@@ -1,16 +1,17 @@
+import 'package:flutproj2/models/recipe_model_db.dart';
 import 'package:flutproj2/pages/recipe_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/recipe_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutproj2/models/favorites_list.dart';
 
-class RecipeCard extends StatefulWidget{
-  final RecipeModel recipeModel;
-  RecipeCard({required this.recipeModel});
+class RecipeCardDB extends StatefulWidget{
+  final RecipeModelDB recipeModel;
+  RecipeCardDB({required this.recipeModel});
   @override
-  _RecipeCardState createState() => _RecipeCardState();
+  _RecipeCardDBState createState() => _RecipeCardDBState();
 }
-class _RecipeCardState extends State<RecipeCard> {
+class _RecipeCardDBState extends State<RecipeCardDB> {
   late Icon favoriteIcon;
   void _refreshFavoriteIcon(){
     if (this.mounted) {
@@ -64,16 +65,16 @@ class _RecipeCardState extends State<RecipeCard> {
             Align(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: Text(widget.recipeModel.title,
+                child: Text(widget.recipeModel.name,
                   style: const TextStyle(
-                    fontSize: 19,
-                    color: Colors.white70
+                      fontSize: 19,
+                      color: Colors.white70
                   ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   textAlign: TextAlign.center,
-                  ),
                 ),
+              ),
               alignment: Alignment.center,
             ),
             Align(
@@ -115,44 +116,48 @@ class _RecipeCardState extends State<RecipeCard> {
               alignment: Alignment.bottomLeft,
             ),
             Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                padding: const EdgeInsets.all(5),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.4),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: InkWell(
-                  child: favoriteIcon,
-                  onTap: (){
-                    if (this.mounted){
-                      setState(() {
-                        FavoritesModel favorites = context.read<FavoritesModel>();
-                        if (widget.recipeModel.getIsFavorite){
-                          favorites.delete(widget.recipeModel);
-                        }else{
-                          favorites.add(widget.recipeModel);
-                        }
-                        widget.recipeModel.changeIsFavorite();
-                        _refreshFavoriteIcon();
-                      });
-                    }
-                  },
-                ),
-              )
+                alignment: Alignment.topRight,
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: InkWell(
+                    child: favoriteIcon,
+                    // onTap: (){
+                    //   if (this.mounted){
+                    //     setState(() {
+                    //       FavoritesModel favorites = context.read<FavoritesModel>();
+                    //       if (widget.recipeModel.getIsFavorite){
+                    //         favorites.delete(widget.recipeModel);
+                    //       }else{
+                    //         favorites.add(widget.recipeModel);
+                    //       }
+                    //       widget.recipeModel.changeIsFavorite();
+                    //       _refreshFavoriteIcon();
+                    //     });
+                    //   }
+                    // },
+                  ),
+                )
             )
           ],
         ),
       ),
-      // onTap:() => Navigator.push(
-      // context,
-      // MaterialPageRoute(
-      //   builder: (context) => RecipeDetails(
-      //     recipeModel: widget.recipeModel,
-      //     refreshFavoriteIcon: _refreshFavoriteIcon,
-      //   ),
-      // )),
+      onTap:() {
+        Navigator.push(
+         context,
+         MaterialPageRoute(
+           builder:
+             (context) =>
+             RecipeDetails(
+               recipeModel: widget.recipeModel,
+               refreshFavoriteIcon: _refreshFavoriteIcon,
+             ),
+         ));
+      }
     );
   }
 }

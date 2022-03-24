@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutproj2/models/recipe_model.dart';
+import 'package:flutproj2/ui/recipe_list_db.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/ui/recipes_list.dart';
 class RecipeBook extends StatefulWidget{
@@ -68,7 +71,8 @@ class _RecipeBookState extends State<RecipeBook>{
       body: SafeArea(
         child: Container(
           color: Theme.of(context).scaffoldBackgroundColor,
-          child: RecipesListUI(recipes: RecipeModel.demoRecipes.where((element) => element.title.toLowerCase().contains(_filter)).toList()),
+          //child: RecipesListUI(recipes: RecipeModel.demoRecipes.where((element) => element.title.toLowerCase().contains(_filter)).toList()),
+          child: RecipesListUIDB(query: FirebaseFirestore.instance.collection('recipes').orderBy('name')),
         ),
       ),
     );
