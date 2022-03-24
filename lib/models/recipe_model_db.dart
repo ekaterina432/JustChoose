@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/ingredient_model.dart';
 
@@ -56,18 +58,21 @@ class RecipeModelDB{
   void getFullData() async {
     if (!_isFull){
       QuerySnapshot snapshot =  await ref.collection('recipe_hints').get();
-      for(String hint in (snapshot.docs.first.data() as Map).values){
-        hints.add(hint);
+      Map hints_map = (snapshot.docs.first.data() as Map);
+      for(String key in hints_map.keys.toList()..sort()){
+        hints.add(hints_map[key]);
       }
 
       snapshot = await ref.collection('recipe_instructions').get();
-      for(String step in (snapshot.docs.first.data() as Map).values){
-        steps.add(step);
+      Map steps_map = (snapshot.docs.first.data() as Map);
+      for(String key in steps_map.keys.toList()..sort()){
+        steps.add(steps_map[key]);
       }
 
       snapshot = await ref.collection('recipe_ingredients').get();
-      for(Map ingredient in (snapshot.docs.first.data() as Map).values){
-        ingredients.add(Ingredient(quantity: ingredient['quantity'], name: ingredient['name']));
+      Map ingredients_map = (snapshot.docs.first.data() as Map);
+      for(String key in ingredients_map.keys.toList()..sort()){
+        ingredients.add(Ingredient(quantity: ingredients_map[key]['quantity'], name: ingredients_map[key]['name']));
       }
       _isFull = true;
     }

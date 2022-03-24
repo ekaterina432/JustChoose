@@ -72,7 +72,7 @@ class _RecipeBookState extends State<RecipeBook>{
         child: Container(
           color: Theme.of(context).scaffoldBackgroundColor,
           //child: RecipesListUI(recipes: RecipeModel.demoRecipes.where((element) => element.title.toLowerCase().contains(_filter)).toList()),
-          child: RecipesListUIDB(query: FirebaseFirestore.instance.collection('recipes').orderBy('name')),
+          child: RecipesListUIDB(query: FirebaseFirestore.instance.collection('recipes')),
         ),
       ),
     );
