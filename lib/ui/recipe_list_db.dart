@@ -15,12 +15,11 @@ class RecipesListUIDB extends StatefulWidget{
 }
 
 class _RecipesListUIDB extends State<RecipesListUIDB>{
-  static const PAGE_SIZE = 10;
   bool _allFetched = false;
   bool _isLoading = false;
   List<RecipeModelDB> _data = [];
   DocumentSnapshot? _lastDocument;
-
+  static const PAGE_SIZE = 10;
   @override
   void initState() {
     super.initState();
@@ -42,7 +41,7 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
       widget.query = widget.query.limit(PAGE_SIZE);
     }
 
-    QuerySnapshot querySnapshot = await getQuery(widget.query);
+    QuerySnapshot querySnapshot = await getQuery(widget.query, PAGE_SIZE);
     if (querySnapshot.docs.isNotEmpty) {
       _lastDocument = querySnapshot.docs.last;
     } else {

@@ -58,19 +58,19 @@ class RecipeModelDB{
   }
   void getFullData() async {
     if (!_isFull){
-      QuerySnapshot snapshot =  await getQuery(ref.collection('recipe_hints'));
+      QuerySnapshot snapshot =  await getQuery(ref.collection('recipe_hints'), 1);
       Map hints_map = (snapshot.docs.first.data() as Map);
       for(String key in hints_map.keys.toList()..sort()){
         hints.add(hints_map[key]);
       }
 
-      snapshot = await getQuery(ref.collection('recipe_instructions'));
+      snapshot = await getQuery(ref.collection('recipe_instructions'), 1);
       Map steps_map = (snapshot.docs.first.data() as Map);
       for(String key in steps_map.keys.toList()..sort()){
         steps.add(steps_map[key]);
       }
 
-      snapshot = await getQuery(ref.collection('recipe_ingredients'));
+      snapshot = await getQuery(ref.collection('recipe_ingredients'), 1);
       Map ingredients_map = (snapshot.docs.first.data() as Map);
       for(String key in ingredients_map.keys.toList()..sort()){
         ingredients.add(Ingredient(quantity: ingredients_map[key]['quantity'], name: ingredients_map[key]['name']));

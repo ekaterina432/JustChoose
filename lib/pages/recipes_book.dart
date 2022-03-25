@@ -13,14 +13,20 @@ class _RecipeBookState extends State<RecipeBook>{
   Widget _searchIcon = Icon(Icons.search);
   Widget _appBarTitle = Text("Книга рецептов");
   bool _isSearching = false;
+  late Query<Map<String,dynamic>> _query;
   final TextEditingController _te_controller = TextEditingController();
   String _filter = "";
   @override
   void initState(){
+    _query = FirebaseFirestore.instance.collection('recipes');
     super.initState();
     _te_controller.addListener(() {
       setState(() {
-        _filter = _te_controller.text;
+        _query = FirebaseFirestore.instance.collection('recipes');
+          _filter = _te_controller.text;
+          for(String keyword in _filter.toLowerCase().split(r'\s+')){
+            _query = _query.where('keywords', arrayContains: keyword);
+        }
       });
     });
   }
@@ -57,6 +63,7 @@ class _RecipeBookState extends State<RecipeBook>{
 
   @override
   Widget build(BuildContext context) {
+    //Future.delayed(Duration(milliseconds: 500));
     return Scaffold(
       appBar:
       AppBar(
