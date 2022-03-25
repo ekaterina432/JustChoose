@@ -42,7 +42,7 @@ class _RecipeBookState extends State<RecipeBook>{
             child: TextField(
               controller: _te_controller,
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: Icon(Icons.search, color: Theme.of(context).appBarTheme.backgroundColor),
                 hintText: 'Поищем...',
                 border: InputBorder.none
               ),
@@ -71,7 +71,6 @@ class _RecipeBookState extends State<RecipeBook>{
       body: SafeArea(
         child: Container(
           color: Theme.of(context).scaffoldBackgroundColor,
-          //child: RecipesListUI(recipes: RecipeModel.demoRecipes.where((element) => element.title.toLowerCase().contains(_filter)).toList()),
           child: RecipesListUIDB(query: FirebaseFirestore.instance.collection('recipes')),
         ),
       ),

@@ -1,5 +1,6 @@
 //import 'dart:js';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutproj2/pages/Home.dart';
@@ -19,11 +20,14 @@ import 'package:flutproj2/categories/snacks.dart';
 import 'package:flutproj2/categories/drinks.dart';
 import 'package:flutproj2/categories/deserts.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     ChangeNotifierProvider(
       create: (context) => FavoritesModel(),

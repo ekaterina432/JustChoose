@@ -14,7 +14,7 @@ class RecipesListUIDB extends StatefulWidget{
 }
 
 class _RecipesListUIDB extends State<RecipesListUIDB>{
-  static const PAGE_SIZE = 12;
+  static const PAGE_SIZE = 10;
   bool _allFetched = false;
   bool _isLoading = false;
   List<RecipeModelDB> _data = [];
@@ -24,6 +24,21 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
   void initState() {
     super.initState();
     _fetchFirebaseData();
+  }
+
+  Future<QuerySnapshot> _fetchPage() async{
+    try {
+      QuerySnapshot qs = await widget.query.get(GetOptions(source: Source.cache));
+      if (qs.docs.isEmpty) {
+        print('from Server');
+        return widget.query.get(GetOptions(source: Source.server));
+      }
+      print('from Cache');
+      return qs;
+    } catch (_) {
+      print('from Server');
+      return widget.query.get(GetOptions(source: Source.server));
+    }
   }
 
   Future<void> _fetchFirebaseData() async {
@@ -41,16 +56,28 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
       widget.query = widget.query.limit(PAGE_SIZE);
     }
 
-    final List<RecipeModelDB> pagedData = await widget.query.get().then((value) {
-      if (value.docs.isNotEmpty) {
-        _lastDocument = value.docs.last;
-      } else {
-        _lastDocument = null;
-      }
-      return value.docs
-          .map((e) => RecipeModelDB.fromSnapshot(e.id, e.data(), e.reference)) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          .toList();
-    });
+    QuerySnapshot querySnapshot = await _fetchPage();
+    if (querySnapshot.docs.isNotEmpty) {
+      _lastDocument = querySnapshot.docs.last;
+    } else {
+      _lastDocument = null;
+    }
+
+    List<RecipeModelDB> pagedData = querySnapshot.docs.map(
+            (e) => RecipeModelDB.fromSnapshot(e.id, e.data() as Map<String, dynamic>, e.reference)
+    ).toList();
+
+
+    // final List<RecipeModelDB> pagedData = await widget.query.get().then((value) {
+    //   if (value.docs.isNotEmpty) {
+    //     _lastDocument = value.docs.last;
+    //   } else {
+    //     _lastDocument = null;
+    //   }
+    //   return value.docs
+    //       .map((e) => RecipeModelDB.fromSnapshot(e.id, e.data(), e.reference))
+    //       .toList();
+    // });
 
     setState(() {
       _data.addAll(pagedData);
@@ -93,7 +120,6 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
       onNotification: (scrollEnd) {
         if (scrollEnd.metrics.atEdge && scrollEnd.metrics.pixels > 0) {
           _fetchFirebaseData();
-          print('scrollend' + _data.length.toString());
         }
         return true;
       },
