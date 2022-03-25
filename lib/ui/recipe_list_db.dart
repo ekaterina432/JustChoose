@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/recipe_model_db.dart';
+import 'package:flutproj2/query_cache_processing.dart';
 import 'package:flutproj2/ui/recipe_card_db.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/ui/recipe_card.dart';
@@ -26,21 +27,6 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
     _fetchFirebaseData();
   }
 
-  Future<QuerySnapshot> _fetchPage() async{
-    try {
-      QuerySnapshot qs = await widget.query.get(GetOptions(source: Source.cache));
-      if (qs.docs.isEmpty) {
-        print('from Server');
-        return widget.query.get(GetOptions(source: Source.server));
-      }
-      print('from Cache');
-      return qs;
-    } catch (_) {
-      print('from Server');
-      return widget.query.get(GetOptions(source: Source.server));
-    }
-  }
-
   Future<void> _fetchFirebaseData() async {
     if (_isLoading) {
       return;
@@ -56,7 +42,7 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
       widget.query = widget.query.limit(PAGE_SIZE);
     }
 
-    QuerySnapshot querySnapshot = await _fetchPage();
+    QuerySnapshot querySnapshot = await getQuery(widget.query);
     if (querySnapshot.docs.isNotEmpty) {
       _lastDocument = querySnapshot.docs.last;
     } else {
@@ -66,18 +52,6 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
     List<RecipeModelDB> pagedData = querySnapshot.docs.map(
             (e) => RecipeModelDB.fromSnapshot(e.id, e.data() as Map<String, dynamic>, e.reference)
     ).toList();
-
-
-    // final List<RecipeModelDB> pagedData = await widget.query.get().then((value) {
-    //   if (value.docs.isNotEmpty) {
-    //     _lastDocument = value.docs.last;
-    //   } else {
-    //     _lastDocument = null;
-    //   }
-    //   return value.docs
-    //       .map((e) => RecipeModelDB.fromSnapshot(e.id, e.data(), e.reference))
-    //       .toList();
-    // });
 
     setState(() {
       _data.addAll(pagedData);

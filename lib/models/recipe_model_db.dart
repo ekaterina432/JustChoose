@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/ingredient_model.dart';
+import 'package:flutproj2/query_cache_processing.dart';
 
 class RecipeModelDB{
   late String name, description, id;
@@ -57,19 +58,19 @@ class RecipeModelDB{
   }
   void getFullData() async {
     if (!_isFull){
-      QuerySnapshot snapshot =  await ref.collection('recipe_hints').get();
+      QuerySnapshot snapshot =  await getQuery(ref.collection('recipe_hints'));
       Map hints_map = (snapshot.docs.first.data() as Map);
       for(String key in hints_map.keys.toList()..sort()){
         hints.add(hints_map[key]);
       }
 
-      snapshot = await ref.collection('recipe_instructions').get();
+      snapshot = await getQuery(ref.collection('recipe_instructions'));
       Map steps_map = (snapshot.docs.first.data() as Map);
       for(String key in steps_map.keys.toList()..sort()){
         steps.add(steps_map[key]);
       }
 
-      snapshot = await ref.collection('recipe_ingredients').get();
+      snapshot = await getQuery(ref.collection('recipe_ingredients'));
       Map ingredients_map = (snapshot.docs.first.data() as Map);
       for(String key in ingredients_map.keys.toList()..sort()){
         ingredients.add(Ingredient(quantity: ingredients_map[key]['quantity'], name: ingredients_map[key]['name']));
