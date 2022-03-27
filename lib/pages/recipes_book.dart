@@ -22,7 +22,8 @@ class _RecipeBookState extends State<RecipeBook>{
     _query = FirebaseFirestore.instance.collection('recipes');
     super.initState();
     _teController.addListener(() {
-      List<String> searchWords = _teController.text.toLowerCase().split(r'\s+');
+      List<String> searchWords = _teController.text.toLowerCase().split(new RegExp(r'\s+'));
+      print(searchWords);
       if (searchWords[0].length >= 2){
         setState(() {
           _searchActive = true;
