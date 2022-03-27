@@ -53,6 +53,10 @@ void main() async {
           primaryColor: Colors.orange,
             colorScheme: ColorScheme.fromSwatch()
                 .copyWith(secondary: Colors.orange),
+          textSelectionTheme: const TextSelectionThemeData(
+            cursorColor: Colors.brown,
+            selectionHandleColor: Colors.orange
+          ),
           appBarTheme: AppBarTheme(color: Colors.brown)
         )
       )

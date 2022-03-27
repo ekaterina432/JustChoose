@@ -1,9 +1,7 @@
 import 'package:flutproj2/models/recipe_model_db.dart';
 import 'package:flutproj2/pages/recipe_details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutproj2/models/recipe_model.dart';
-import 'package:provider/provider.dart';
-import 'package:flutproj2/models/favorites_list.dart';
+
 
 class RecipeCardDB extends StatefulWidget{
   final RecipeModelDB recipeModel;
@@ -13,6 +11,7 @@ class RecipeCardDB extends StatefulWidget{
 }
 class _RecipeCardDBState extends State<RecipeCardDB> {
   late Icon favoriteIcon;
+
   void _refreshFavoriteIcon(){
     if (this.mounted) {
       setState(() {
@@ -146,7 +145,9 @@ class _RecipeCardDBState extends State<RecipeCardDB> {
           ],
         ),
       ),
+      onTapDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
       onTap:() {
+        widget.recipeModel.getFullData();
         Navigator.push(
          context,
          MaterialPageRoute(

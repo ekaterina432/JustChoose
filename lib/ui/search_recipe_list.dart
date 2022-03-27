@@ -5,15 +5,18 @@ import 'package:flutproj2/ui/recipe_card_db.dart';
 import 'package:flutter/material.dart';
 
 
-class RecipesListUIDB extends StatefulWidget{
+class SearchRecipesListUIDB extends StatefulWidget{
   Query<Map<String, dynamic>> query;
-  RecipesListUIDB({ required this.query, Key? key}) :  super(key: key);
-  _RecipesListUIDB createState() => _RecipesListUIDB();
+  String searchText;
+  SearchRecipesListUIDB({ required this.query, required this.searchText, Key? key}) :  super(key: key);
+  _SearchRecipesListUIDB createState() => _SearchRecipesListUIDB();
 }
 
-class _RecipesListUIDB extends State<RecipesListUIDB>{
+class _SearchRecipesListUIDB extends State<SearchRecipesListUIDB>{
   bool _allFetched = false;
   bool _isLoading = false;
+  bool _isScrollEnd = false;
+  ScrollController _scrollController = ScrollController();
   List<RecipeModelDB> _data = [];
   DocumentSnapshot? _lastDocument;
   static const PAGE_SIZE = 10;
@@ -26,6 +29,20 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
     _fetchFirebaseData();
   }
 
+  @override
+  void didUpdateWidget(SearchRecipesListUIDB oldWidget){
+    if (oldWidget.searchText !=  widget.searchText){
+      super.didUpdateWidget(oldWidget);
+      _scrollController.animateTo(-_scrollController.offset,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeOut);
+      _query = widget.query;
+      _isScrollEnd = false;
+      _fetchFirebaseData();
+    }
+  }
+
+
   Future<void> _fetchFirebaseData() async {
     if (_isLoading) {
       return;
@@ -35,13 +52,14 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
       _isLoading = true;
     });
 
-
+    if (!_isScrollEnd){
+      _lastDocument = null;
+    }
     if (_lastDocument != null) {
       _query = _query.startAfterDocument(_lastDocument!).limit(PAGE_SIZE);
     } else {
       _query = _query.limit(PAGE_SIZE);
     }
-
 
     QuerySnapshot querySnapshot = await getQuery(_query, PAGE_SIZE);
     if (querySnapshot.docs.isNotEmpty) {
@@ -55,6 +73,9 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
     ).toList();
 
     setState(() {
+      if (!_isScrollEnd){
+        _data = [];
+      }
       _data.addAll(pagedData);
       if (pagedData.length < PAGE_SIZE) {
         _allFetched = true;
@@ -68,6 +89,7 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
     return NotificationListener<ScrollEndNotification>(
       child: ListView.builder(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        controller: _scrollController,
         physics: ScrollPhysics(),
         itemBuilder: (context, index){
           if (index == _data.length) {
@@ -93,6 +115,7 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
       ),
       onNotification: (scrollEnd) {
         if (scrollEnd.metrics.atEdge && scrollEnd.metrics.pixels > 0) {
+          _isScrollEnd = true;
           _fetchFirebaseData();
         }
         return true;

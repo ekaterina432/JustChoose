@@ -19,7 +19,6 @@ class _RecipeDetailsState extends State<RecipeDetails>{
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    widget.recipeModel.getFullData();
     return Scaffold(
       body: SlidingUpPanel(
         minHeight: size.height/2,

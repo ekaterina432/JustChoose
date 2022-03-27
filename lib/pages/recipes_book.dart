@@ -1,86 +1,61 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutproj2/models/recipe_model.dart';
 import 'package:flutproj2/ui/recipe_list_db.dart';
+import 'package:flutproj2/ui/search_app_bar.dart';
+import 'package:flutproj2/ui/search_recipe_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutproj2/ui/recipes_list.dart';
+
+
+
 class RecipeBook extends StatefulWidget{
   const RecipeBook({Key? key}) : super(key: key);
   @override
   _RecipeBookState createState() => _RecipeBookState();
 }
 class _RecipeBookState extends State<RecipeBook>{
-  Widget _searchIcon = Icon(Icons.search);
-  Widget _appBarTitle = Text("Книга рецептов");
-  bool _isSearching = false;
+  bool _searchBarActive = false;
+  bool _searchActive = false;
   late Query<Map<String,dynamic>> _query;
-  final TextEditingController _te_controller = TextEditingController();
-  String _filter = "";
+  final TextEditingController _teController = TextEditingController();
+
   @override
   void initState(){
     _query = FirebaseFirestore.instance.collection('recipes');
     super.initState();
-    _te_controller.addListener(() {
-      setState(() {
-        _query = FirebaseFirestore.instance.collection('recipes');
-          _filter = _te_controller.text;
-          for(String keyword in _filter.toLowerCase().split(r'\s+')){
-            _query = _query.where('keywords', arrayContains: keyword);
-        }
-      });
+    _teController.addListener(() {
+      List<String> searchWords = _teController.text.toLowerCase().split(r'\s+');
+      if (searchWords[0].length >= 2){
+        setState(() {
+          _searchActive = true;
+          _query = FirebaseFirestore.instance.collection('recipes').where('keywords', arrayContains: searchWords[0]);
+        });
+      }
     });
-  }
-  void _changeSearchState(){
-    if (_isSearching){
-      setState(() {
-        _appBarTitle = Text("Книга рецептов");
-        _searchIcon = Icon(Icons.search);
-        _isSearching = false;
-        _te_controller.clear();
-      });
-    } else{
-      setState(() {
-        _appBarTitle = Container(
-          width: double.infinity,
-          height: 40,
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5)),
-          child: Center(
-            child: TextField(
-              controller: _te_controller,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search, color: Theme.of(context).appBarTheme.backgroundColor),
-                hintText: 'Поищем...',
-                border: InputBorder.none
-              ),
-            ),
-          ),
-        );
-        _searchIcon = Icon(Icons.close);
-        _isSearching = true;
-      });
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    //Future.delayed(Duration(milliseconds: 500));
-    return Scaffold(
-      appBar:
-      AppBar(
-        title: _appBarTitle,
-        actions: [
-          IconButton(
-            onPressed: _changeSearchState,
-            icon: _searchIcon
-          )
-        ],
-      ),
-      body: SafeArea(
-        child: Container(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          child: RecipesListUIDB(query: FirebaseFirestore.instance.collection('recipes')),
+    return GestureDetector(
+      onTapDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        appBar: SearchAppBar(teController: _teController,
+        onIsSearchingChange: (){
+          if (!_searchBarActive){
+            _searchBarActive = true;
+          } else {
+            setState(() {
+              _searchBarActive = false;
+              _searchActive = false;
+              _query = FirebaseFirestore.instance.collection('recipes');
+            });
+          }
+        },),
+        body: SafeArea(
+          child: Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: _searchActive? SearchRecipesListUIDB(query: _query, searchText: _teController.text,):RecipesListUIDB(query: _query),
+          ),
         ),
-      ),
+      )
     );
   }
 }
