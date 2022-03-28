@@ -27,7 +27,7 @@ class _RecipeBookState extends State<RecipeBook>{
       if (searchWords[0].length >= 2){
         setState(() {
           _searchActive = true;
-          _query = FirebaseFirestore.instance.collection('recipes').where('keywords', arrayContains: searchWords[0]);
+          _query = FirebaseFirestore.instance.collection('recipes').where('keywords', arrayContainsAny: searchWords);
         });
       }
     });

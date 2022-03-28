@@ -54,6 +54,7 @@ class _SearchRecipesListUIDB extends State<SearchRecipesListUIDB>{
 
     if (!_isScrollEnd){
       _lastDocument = null;
+      _allFetched = false;
     }
     if (_lastDocument != null) {
       _query = _query.startAfterDocument(_lastDocument!).limit(PAGE_SIZE);
