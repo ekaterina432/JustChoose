@@ -130,9 +130,9 @@ class _RecipeCardState extends State<RecipeCard> {
                       setState(() {
                         FavoritesModel favorites = context.read<FavoritesModel>();
                         if (widget.recipeModel.getIsFavorite){
-                          favorites.delete(widget.recipeModel);
+                          favorites.delete(widget.recipeModel.id);
                         }else{
-                          favorites.add(widget.recipeModel);
+                          favorites.add(widget.recipeModel.id);
                         }
                         widget.recipeModel.changeIsFavorite();
                         _refreshFavoriteIcon();

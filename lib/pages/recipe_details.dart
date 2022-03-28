@@ -18,6 +18,7 @@ class RecipeDetails extends StatefulWidget{
 class _RecipeDetailsState extends State<RecipeDetails>{
   @override
   Widget build(BuildContext context) {
+    Iterable<String> favoritesIds = context.watch<FavoritesModel>().getIds();
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SlidingUpPanel(
@@ -105,21 +106,21 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                   Text("${widget.recipeModel.servings} порц.", style: Theme.of(context).textTheme.subtitle2),
                   Expanded(child: Container(),),
                   InkWell(
-                    child: Icon(widget.recipeModel.getIsFavorite? Icons.favorite:Icons.favorite_border,
+                    child: Icon(favoritesIds.contains(widget.recipeModel.id)? Icons.favorite:Icons.favorite_border,
                       color: Theme.of(context).primaryColor,
                       size: 32),
-                    // onTap: (){
-                    //   setState(() {
-                    //     FavoritesModel favorites = context.read<FavoritesModel>();
-                    //     if (widget.recipeModel.getIsFavorite){
-                    //       favorites.delete(widget.recipeModel);
-                    //     }else{
-                    //       favorites.add(widget.recipeModel);
-                    //     }
-                    //     widget.recipeModel.changeIsFavorite();
-                    //     widget.refreshFavoriteIcon();
-                    //   });
-                    // },
+                     onTap: (){
+                       setState(() {
+                         FavoritesModel favorites = context.read<FavoritesModel>();
+                         if (favoritesIds.contains(widget.recipeModel.id)){
+                           favorites.delete(widget.recipeModel.id);
+                         }else{
+                           favorites.add(widget.recipeModel.id);
+                         }
+                         //widget.recipeModel.changeIsFavorite();
+                         widget.refreshFavoriteIcon();
+                       });
+                     },
                   ),
                   SizedBox(width: 10,),
                 ],

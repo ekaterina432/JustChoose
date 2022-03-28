@@ -28,6 +28,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FavoritesModel().LoadFavorites();
   runApp(
     ChangeNotifierProvider(
       create: (context) => FavoritesModel(),
