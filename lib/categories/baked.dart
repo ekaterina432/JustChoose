@@ -35,8 +35,8 @@ class _BakedState extends State<Baked>{
                                 Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
-
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('meat', isEqualTo:true)
+                                  )
                                 ));
                           },
                               style: ButtonStyle(
@@ -50,8 +50,8 @@ class _BakedState extends State<Baked>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
-
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('seafood', isEqualTo:true)
+                                  )
                                 ));
                           },
                               style: ButtonStyle(
@@ -65,8 +65,8 @@ class _BakedState extends State<Baked>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
-
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('vegetables', isEqualTo: true)
+                                  )
                                 ));
                           },
                               style: ButtonStyle(
