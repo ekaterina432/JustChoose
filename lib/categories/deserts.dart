@@ -38,7 +38,7 @@ class _DesertState extends State<Desert>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('desserts', isEqualTo: true).where('fried', isEqualTo: true), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -53,7 +53,7 @@ class _DesertState extends State<Desert>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('desserts', isEqualTo: true).where('oven', isEqualTo: true), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -68,7 +68,7 @@ class _DesertState extends State<Desert>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('desserts', isEqualTo: true).where('without_heat', isEqualTo: true), ),
 
                                 ));
                           },
