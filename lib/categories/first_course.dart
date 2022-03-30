@@ -54,7 +54,8 @@ class _FirstCourseState extends State<FirstCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'),),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('unusual', isEqualTo:true)
+                                  )
                                 ));
                           },
                               style: ButtonStyle(
