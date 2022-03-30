@@ -19,7 +19,6 @@ class IngredientSearchField extends StatefulWidget{
   _IngredientSearchFieldState createState() => _IngredientSearchFieldState();
 }
 class _IngredientSearchFieldState extends State<IngredientSearchField>{
-  List<DropdownMenuItem> _items = [];
   late TextEditingController _typeAheadController;
 
   @override
@@ -32,9 +31,9 @@ class _IngredientSearchFieldState extends State<IngredientSearchField>{
         children: [
           Expanded(
           child: TypeAheadField(
+            autoFlipDirection: true,
             suggestionsBoxDecoration: SuggestionsBoxDecoration(
               borderRadius: BorderRadius.circular(10),
-
             ),
             textFieldConfiguration: TextFieldConfiguration(
               controller: _typeAheadController,
