@@ -121,7 +121,7 @@ packages:
     source: hosted
     version: "6.1.2"
   firebase_auth:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_auth
       url: "https://pub.dartlang.org"
@@ -288,7 +288,7 @@ packages:
     source: hosted
     version: "0.3.6+1"
   google_sign_in:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: google_sign_in
       url: "https://pub.dartlang.org"

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutproj2/categories/final.dart';
@@ -37,7 +38,8 @@ class _SecondCourseState extends State<SecondCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: Salads(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+
                                 ));
                           },
                               style: ButtonStyle(
@@ -74,7 +76,7 @@ class _SecondCourseState extends State<SecondCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: Boiled(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
                                 ));
                           },
                               style: ButtonStyle(

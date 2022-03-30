@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutproj2/models/recipe_model.dart';
+import 'package:flutproj2/ui/recipe_list_db.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/ui/recipes_list.dart';
 class Final extends StatefulWidget{
-  final CategoryModel category;
-  const Final({Key? key, required this.category}) : super(key: key);
+  final Query <Map<String,dynamic>> query;
+  const Final({Key? key, required this.query}) : super(key: key);
   @override
   _FinalState createState() => _FinalState();
 }
@@ -12,7 +14,7 @@ class _FinalState extends State<Final>{
 
   @override
   Widget build(BuildContext context) {
-    Type type = widget.category.runtimeType;
+    Type type = widget.query.runtimeType;
     return Scaffold(
 
       appBar:
@@ -25,10 +27,8 @@ class _FinalState extends State<Final>{
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  child: RecipesListUI(
-                      recipes: RecipeModel.demoRecipes.where((element) => element.category.runtimeType == type).toList()
+                  child: RecipesListUIDB(query: widget.query)
                   )
-                )
               ]
           )
       ),

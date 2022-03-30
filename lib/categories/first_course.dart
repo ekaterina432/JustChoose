@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
@@ -38,8 +39,9 @@ class _FirstCourseState extends State<FirstCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: FirstClassic(), ),
-                                ));
+                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('classic', isEqualTo:true)
+                                )
+                            ));
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
@@ -52,7 +54,7 @@ class _FirstCourseState extends State<FirstCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: FirstUnusual(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'),),
                                 ));
                           },
                               style: ButtonStyle(

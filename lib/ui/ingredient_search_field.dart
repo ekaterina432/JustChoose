@@ -10,11 +10,12 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 class IngredientSearchField extends StatefulWidget{
   int number;
   final void Function(int) deleteField;
+  VoidCallback resetSearch;
   String getText(){
     return _typeAheadController.text;
   }
   final TextEditingController _typeAheadController = TextEditingController();
-  IngredientSearchField({required this.deleteField, required this.number, Key? key}) : super(key: key);
+  IngredientSearchField({required this.resetSearch, required this.deleteField, required this.number, Key? key}) : super(key: key);
   _IngredientSearchFieldState createState() => _IngredientSearchFieldState();
 }
 class _IngredientSearchFieldState extends State<IngredientSearchField>{
@@ -81,12 +82,14 @@ class _IngredientSearchFieldState extends State<IngredientSearchField>{
             },
             onSuggestionSelected: (Object? suggestion) {
               _typeAheadController.text = suggestion as String;
+              widget.resetSearch();
             },
           ),
           ),
           widget.number!=0 ? TextButton(
               onPressed: (){
                 widget.deleteField(widget.number);
+                widget.resetSearch();
               },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all<CircleBorder>(const CircleBorder()),

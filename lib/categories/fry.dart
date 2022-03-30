@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
@@ -36,7 +37,7 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: FriedMeat(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -50,7 +51,8 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: FriedSeafood(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+
                                 ));
                           },
                               style: ButtonStyle(
@@ -64,7 +66,8 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: FriedVeget(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+
                                 ));
                           },
                               style: ButtonStyle(
