@@ -10,13 +10,10 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 class IngredientSearchField extends StatefulWidget{
   int number;
   final void Function(int) deleteField;
-  void numberDec(){
-    this.number--;
-  }
   String getText(){
-    return typeAheadController.text;
+    return _typeAheadController.text;
   }
-  final TextEditingController typeAheadController = TextEditingController();
+  final TextEditingController _typeAheadController = TextEditingController();
   IngredientSearchField({required this.deleteField, required this.number, Key? key}) : super(key: key);
   _IngredientSearchFieldState createState() => _IngredientSearchFieldState();
 }
@@ -26,7 +23,7 @@ class _IngredientSearchFieldState extends State<IngredientSearchField>{
 
   @override
   Widget build(BuildContext context) {
-    _typeAheadController = widget.typeAheadController;
+    _typeAheadController = widget._typeAheadController;
     double textfieldDimension = 40;
     return Container(
       height: textfieldDimension,
@@ -63,35 +60,39 @@ class _IngredientSearchFieldState extends State<IngredientSearchField>{
             },
             itemBuilder: (BuildContext context, itemData) {
               if (itemData == ""){
-                return Container(
-                  child:const Text("Побольше бы символов...", style: TextStyle(
+                return const SizedBox(
+                  child:Text(" Побольше бы символов...", style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 20
+                      fontSize: 18
                   ),),
-                  height: 30,
+                  height: 28,
                 );
               }
               return ListTile(title: Text(itemData as String), );
             },
             noItemsFoundBuilder: (context){
-              return Container(
-                child:const Text("Ничего не найдено", style: TextStyle(
+              return const SizedBox(
+                child:Text(" Ничего не найдено", style: TextStyle(
                   color: Colors.grey,
-                  fontSize: 20
+                  fontSize: 18
                 ),),
-                height: 30,
+                height: 28,
               );
             },
             onSuggestionSelected: (Object? suggestion) {
-              this._typeAheadController.text = suggestion as String;
+              _typeAheadController.text = suggestion as String;
             },
           ),
           ),
-          widget.number!=0 ? IconButton(
+          widget.number!=0 ? TextButton(
               onPressed: (){
                 widget.deleteField(widget.number);
               },
-              icon: const Icon(Icons.clear, color: Colors.brown,),
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all<CircleBorder>(const CircleBorder()),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.orange.withOpacity(0.3)),
+              ),
+              child: const Icon(Icons.clear, color: Colors.brown,),
           ) : const SizedBox(height: 0, width: 0,),
         ],
       ),
