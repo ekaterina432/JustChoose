@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/categories/final.dart';
 import 'package:flutproj2/models/category_model.dart';
@@ -34,7 +35,8 @@ class _BakedState extends State<Baked>{
                                 Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: BakedMeat(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+
                                 ));
                           },
                               style: ButtonStyle(
@@ -48,7 +50,8 @@ class _BakedState extends State<Baked>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: BakedSeafood(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+
                                 ));
                           },
                               style: ButtonStyle(
@@ -62,7 +65,8 @@ class _BakedState extends State<Baked>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: BakedVeget(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+
                                 ));
                           },
                               style: ButtonStyle(

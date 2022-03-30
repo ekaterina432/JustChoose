@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutproj2/categories/final.dart';
@@ -37,7 +38,7 @@ class _SnackState extends State<Snack>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: HotSnacks(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -52,7 +53,7 @@ class _SnackState extends State<Snack>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(category: ColdSnacks(), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
                                 ));
                           },
                               style: ButtonStyle(

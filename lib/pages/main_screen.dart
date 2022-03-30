@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../models/favorites_list.dart';
 
+import '../ui/google_sign_in_button.dart';
+
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -36,7 +38,10 @@ class MainScreen extends StatelessWidget {
                             radius: 50,
                           ),
                           const Padding(padding: EdgeInsets.only(top:100),),
-                          ElevatedButton(onPressed: (){
+                          //SizedBox(height: 50.0),
+                          //GoogleSignInButton(
+                         // onPressed: () => print("Button pressed."),
+                            ElevatedButton(onPressed: (){
                             Navigator.pushNamed(context, '/todo');
                             },style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(Colors.black54),
