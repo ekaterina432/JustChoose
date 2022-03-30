@@ -38,7 +38,7 @@ class _SnackState extends State<Snack>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('snacks', isEqualTo: true).where('hot', isEqualTo: true), ),
                                 ));
                           },
                               style: ButtonStyle(
@@ -53,7 +53,7 @@ class _SnackState extends State<Snack>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('snacks', isEqualTo: true).where('cold', isEqualTo: true), ),
                                 ));
                           },
                               style: ButtonStyle(
