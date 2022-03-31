@@ -37,7 +37,8 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('meat and poultry', isEqualTo:true)
+                                  )
                                 ));
                           },
                               style: ButtonStyle(
@@ -51,8 +52,8 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
-
+                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('from fish and seafood', isEqualTo:true)
+                                    )
                                 ));
                           },
                               style: ButtonStyle(
@@ -66,8 +67,8 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
-
+                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('from vegetables', isEqualTo:true)
+                                    )
                                 ));
                           },
                               style: ButtonStyle(
