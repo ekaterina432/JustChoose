@@ -224,6 +224,10 @@ class _HomeProductState extends State<HomeProduct>{
                   setState(() {
                     _isUpVisible = true;
                   });
+                } else{
+                  setState(() {
+                    _isUpVisible = false;
+                  });
                 }
                 if (_isRecipesReady && !_allFetched && scrollEnd.metrics.atEdge && scrollEnd.metrics.pixels > 0) {
                   _loadModels();
