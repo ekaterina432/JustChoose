@@ -37,8 +37,8 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('meat and poultry', isEqualTo:true)
-                                  )
+                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('meat', isEqualTo:true)
+                            )
                                 ));
                           },
                               style: ButtonStyle(
@@ -52,8 +52,8 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('from fish and seafood', isEqualTo:true)
-                                    )
+                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('seafood', isEqualTo:true)
+                            )
                                 ));
                           },
                               style: ButtonStyle(
@@ -67,8 +67,8 @@ class _FriedState extends State<Fried>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('from vegetables', isEqualTo:true)
-                                    )
+                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('vegetables', isEqualTo:true)
+                            )
                                 ));
                           },
                               style: ButtonStyle(
