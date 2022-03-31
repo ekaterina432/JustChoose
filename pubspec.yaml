@@ -27,12 +27,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  firebase_auth: ^3.1.4
+  firebase_core: ^1.8.0
   cloud_firestore:
-  firebase_core:
   flutter:
     sdk: flutter
+  font_awesome_flutter: ^9.2.0
   duration:
-  firebase_auth:
   sliding_up_panel: ^2.0.0+1
   tab_indicator_styler:
   provider:
