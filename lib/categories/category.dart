@@ -76,7 +76,12 @@ class _CategoryState extends State<Category>{
                                   color: Colors.white))),
                           const Padding(padding: EdgeInsets.only(top:20),),
                           ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/drinks');
+                            Navigator.push.push(
+                                context,
+                                MaterialPageRouteMaterialPageRoute(
+                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('drinks', isEqualTo:true)
+                            )
+                            );
                           },
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
