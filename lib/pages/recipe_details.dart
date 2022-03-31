@@ -153,6 +153,7 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                           Container(
                             child: Tab(text: "Шаги".toUpperCase()),
                           ),
+                          //Visibility( visible: !widget.recipeModel.hints.isEmpty,child: )
                         ],
                       ),
                       SizedBox(height: 8,),
@@ -162,6 +163,7 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                             Description(recipeModel: widget.recipeModel),
                             Ingridients(ingredients: widget.recipeModel.ingredients),
                             Steps(steps: widget.recipeModel.steps),
+                            //Visibility( visible: !widget.recipeModel.hints.isEmpty,child: )
                           ],
                         ),
                       )
@@ -178,66 +180,83 @@ class _RecipeDetailsState extends State<RecipeDetails>{
 }
 
 
-class Description extends StatelessWidget{
+class Description extends StatelessWidget {
   RecipeModelDB recipeModel;
+
   Description({required this.recipeModel});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-      Center(
-      child:Container(
-      height: 4,
-        width: 40,
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(4),
-        ),
-      ),
-    ),
-    Text(recipeModel.description,
-        textAlign: TextAlign.justify,
-        style: TextStyle(
-          fontWeight: FontWeight.w500,
-          height: 1.3,
-        )
-      ),
-    Center(
-      child:Container(
-        height: 4,
-        width: 40,
-        decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(4),
-        ),
-      ),
-    ),
-    Text("\n\n\n" +
-        "Калорийность: " + recipeModel.nutrition['kcal'] + "\n" +
-        "Белки:        " + recipeModel.nutrition['proteins'][1] + "\n" +
-        "Жиры:         " + recipeModel.nutrition['fats'][1] + "\n" +
-        "Углеводы:     " + recipeModel.nutrition['carbs'][1],
-        textAlign: TextAlign.justify,
-        style: TextStyle(
-          fontWeight: FontWeight.w500,
-          height: 1.3,
-        )
-    ),
-          PieChart(dataMap:
-          {
-            "Proteins": double.parse(recipeModel.nutrition['proteins'][1]),
-            "Fats": double.parse(recipeModel.nutrition['fats'][1]),
-            "Carbs": double.parse(recipeModel.nutrition['carbs'][1]),
-          }
-          )
+      child: ListView(
+          //crossAxisAlignment: CrossAxisAlignment.start,
 
-        ]
-      )
+          children: [
 
+            Center(
+              child: Container(
+                height: 4,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+            ),
+
+            Text(recipeModel.description,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  height: 1.3,
+                )
+            ),
+
+            Center(
+              child: Container(
+                height: 4,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+            ),
+
+            Text("\n\n" +
+                "Калорийность: " + recipeModel.nutrition['kcal'] + "\n",
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  height: 1.3,
+                )
+            ),
+
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 7),
+              child: PieChart(
+                dataMap:
+                {
+                  "Белки, г.": double.parse(
+                      (recipeModel.nutrition['proteins'][1]).split(' ')[0]),
+                  "Жиры, г.": double.parse(
+                      (recipeModel.nutrition['fats'][1]).split(' ')[0]),
+                  "Углеводы, г.": double.parse(
+                      (recipeModel.nutrition['carbs'][1]).split(' ')[0]),
+                },
+                chartType: ChartType.ring,
+                baseChartColor: Colors.grey[300]!,
+                colorList: <Color>[
+                  Colors.deepOrangeAccent,
+                  Colors.brown,
+                  Colors.amber,
+                ],
+              ),
+            ),
+
+          ]
+      ),
 
     );
   }
