@@ -3,7 +3,7 @@ import 'package:flutproj2/models/ingredient_model.dart';
 import 'package:flutproj2/query_cache_processing.dart';
 
 class RecipeModelDB{
-  late String name, description, id;
+  late String name, description, id, proteins, fats, carbs, kcal;
   late Duration duration;
   late List<String> category;
   late int servings;
@@ -13,12 +13,18 @@ class RecipeModelDB{
   late double rating;
   late bool _isFavorite;
   late bool _isFull;
+  late Map< String, dynamic> nutrition;
   DocumentReference ref;
   RecipeModelDB.fromSnapshot(this.id, Map<String, dynamic> data, this.ref){
     _isFull = false;
     name = data['name'];
     description = data['description'];
     String ct = data['cookTime'];
+    nutrition = data['nutrition'];
+    // proteins = data['nutrition']['proteins'][1];
+    // fats = data['nutrition']['fats'][1];
+    // carbs = data['nutrition']['carbs'][1];
+    // kcal = data['nutrition']['kcal'];
     RegExpMatch? match = RegExp(r'(\d+)H').firstMatch(ct);
     int hours = match != null ? int.parse(match.group(1).toString()) : 0;
     match = RegExp(r'(\d+)M').firstMatch(ct);
@@ -67,6 +73,24 @@ class RecipeModelDB{
       for(String key in steps_map.keys.toList()..sort()){
         steps.add(steps_map[key]);
       }
+/*
+      snapshot = await getQuery(ref.collection('recipe_ingredients'), 1);
+      Map proteins_map = (snapshot.docs.first.data() as Map);
+      for(String key in proteins_map.keys.toList()..sort()){
+        proteins.add(proteins_map[key]);
+      }
+
+      snapshot = await getQuery(ref.collection('recipe_instructions'), 1);
+      Map fats_map = (snapshot.docs.first.data() as Map);
+      for(String key in fats_map.keys.toList()..sort()){
+        fats.add(fats_map[key]);
+      }
+
+      snapshot = await getQuery(ref.collection('recipe_instructions'), 1);
+      Map carbs_map = (snapshot.docs.first.data() as Map);
+      for(String key in carbs_map.keys.toList()..sort()){
+        cards.add(carbs_map[key]);
+      }*/
 
       snapshot = await getQuery(ref.collection('recipe_ingredients'), 1);
       Map ingredients_map = (snapshot.docs.first.data() as Map);

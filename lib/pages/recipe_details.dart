@@ -158,7 +158,7 @@ class _RecipeDetailsState extends State<RecipeDetails>{
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Description(description: widget.recipeModel.description),
+                            Description(recipeModel: widget.recipeModel),
                             Ingridients(ingredients: widget.recipeModel.ingredients),
                             Steps(steps: widget.recipeModel.steps),
                           ],
@@ -176,13 +176,13 @@ class _RecipeDetailsState extends State<RecipeDetails>{
   }
 }
 class Description extends StatelessWidget{
-  String description;
-  Description({required this.description});
+  RecipeModelDB recipeModel;
+  Description({required this.recipeModel});
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10),
-      child:Text(description,
+      child:Text(recipeModel.description + " " + recipeModel.nutrition['carbs'][1],
         textAlign: TextAlign.justify,
         style: TextStyle(
           fontWeight: FontWeight.w500,
