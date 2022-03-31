@@ -213,10 +213,10 @@ class Description extends StatelessWidget{
       ),
     ),
     Text("\n\n\n" +
-        "Калорийность:  " + recipeModel.nutrition['kcal'] + "\n" +
-        "Белки:         " + recipeModel.nutrition['proteins'][1] + "\n" +
-        "Жиры:          " + recipeModel.nutrition['fats'][1] + "\n" +
-        "Углеводы:      " + recipeModel.nutrition['carbs'][1],
+        "Калорийность: " + recipeModel.nutrition['kcal'] + "\n" +
+        "Белки:        " + recipeModel.nutrition['proteins'][1] + "\n" +
+        "Жиры:         " + recipeModel.nutrition['fats'][1] + "\n" +
+        "Углеводы:     " + recipeModel.nutrition['carbs'][1],
         textAlign: TextAlign.justify,
         style: TextStyle(
           fontWeight: FontWeight.w500,
