@@ -73,24 +73,6 @@ class RecipeModelDB{
       for(String key in steps_map.keys.toList()..sort()){
         steps.add(steps_map[key]);
       }
-/*
-      snapshot = await getQuery(ref.collection('recipe_ingredients'), 1);
-      Map proteins_map = (snapshot.docs.first.data() as Map);
-      for(String key in proteins_map.keys.toList()..sort()){
-        proteins.add(proteins_map[key]);
-      }
-
-      snapshot = await getQuery(ref.collection('recipe_instructions'), 1);
-      Map fats_map = (snapshot.docs.first.data() as Map);
-      for(String key in fats_map.keys.toList()..sort()){
-        fats.add(fats_map[key]);
-      }
-
-      snapshot = await getQuery(ref.collection('recipe_instructions'), 1);
-      Map carbs_map = (snapshot.docs.first.data() as Map);
-      for(String key in carbs_map.keys.toList()..sort()){
-        cards.add(carbs_map[key]);
-      }*/
 
       snapshot = await getQuery(ref.collection('recipe_ingredients'), 1);
       Map ingredients_map = (snapshot.docs.first.data() as Map);

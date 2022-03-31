@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../models/ingredient_model.dart';
 import '../models/recipe_model_db.dart';
+import 'package:pie_chart/pie_chart.dart';
 
 class RecipeDetails extends StatefulWidget{
   VoidCallback refreshFavoriteIcon;
@@ -175,9 +176,12 @@ class _RecipeDetailsState extends State<RecipeDetails>{
     );
   }
 }
+
+
 class Description extends StatelessWidget{
   RecipeModelDB recipeModel;
   Description({required this.recipeModel});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -222,12 +226,23 @@ class Description extends StatelessWidget{
           fontWeight: FontWeight.w500,
           height: 1.3,
         )
-    )
-    ]
-    )
+    ),
+          PieChart(dataMap:
+          {
+            "Proteins": double.parse(recipeModel.nutrition['proteins'][1]),
+            "Fats": double.parse(recipeModel.nutrition['fats'][1]),
+            "Carbs": double.parse(recipeModel.nutrition['carbs'][1]),
+          }
+          )
+
+        ]
+      )
+
+
     );
   }
 }
+
 
 class Ingridients extends StatelessWidget{
   List<Ingredient> ingredients;
