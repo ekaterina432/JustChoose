@@ -76,7 +76,8 @@ class _SecondCourseState extends State<SecondCourse>{
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes'), ),
+                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('boiled_side_dishes', isEqualTo:true)
+                                    )
                                 ));
                           },
                               style: ButtonStyle(
