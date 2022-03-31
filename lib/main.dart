@@ -1,6 +1,7 @@
 //import 'dart:js';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutproj2/pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutproj2/pages/Home.dart';
@@ -21,7 +22,7 @@ import 'package:flutproj2/categories/drinks.dart';
 import 'package:flutproj2/categories/deserts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:flutproj2/ui/google_sign_in_button.dart';
+
 
 
 
@@ -37,7 +38,8 @@ void main() async {
       child:MaterialApp(
         initialRoute: '/',
         routes: {
-          '/':(context) => MainScreen(),
+          '/':(context) => WelcomePage(),
+          '/sign-in' : (context) => SignInPage(),
           '/todo':(context) => Home(),
           '/recipes_book':(context) => RecipeBook(),
           '/home_category': (context) => Category(),

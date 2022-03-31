@@ -10,7 +10,6 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.10'
     }
-    compile 'com.google.firebase:firebase-auth:9.4.0'
 }
 
 allprojects {

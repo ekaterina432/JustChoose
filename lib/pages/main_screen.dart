@@ -1,64 +1,94 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../models/favorites_list.dart';
 
-import '../ui/google_sign_in_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutproj2/utils/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
-
+class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    User? result = FirebaseAuth.instance.currentUser;
     return Scaffold(
-        body:  SafeArea(
-            child:Stack(
-            children: <Widget>[
-             Container(
-               decoration:const  BoxDecoration(
-                 image:  DecorationImage(image:  AssetImage("assets/background.jpg"),
-                   fit: BoxFit.cover,),
-               ),
-             ),
+        backgroundColor: Constants.kPrimaryColor,
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+            value: Constants.statusBarColor,
+            child: Stack(children: <Widget>[
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/background.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               Center(
-                  child:
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children:[
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Padding(padding: EdgeInsets.only(top:20),),
-                          const Text('JustChoose', style: TextStyle(
-                              fontSize: 45.0,
-                              color: Colors.white54),),
-                          const Padding(padding: EdgeInsets.only(top:20),),
-                          const CircleAvatar(
-                            backgroundImage: AssetImage('assets/logo.jpg'),
-                            radius: 50,
-                          ),
-                          const Padding(padding: EdgeInsets.only(top:100),),
-                          //SizedBox(height: 50.0),
-                          //GoogleSignInButton(
-                         // onPressed: () => print("Button pressed."),
-                            ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/todo');
-                            },style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.black54),
-                              textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 30))),
-                              child:
-                              const Text("Sign In with google ", style: TextStyle(
-                                  fontSize: 30,
-                                  fontFamily: 'Roboto-Medium',
-                                  color: Colors.white))),
-                        ],
-                      )
-                    ],
-                  )
-              )
-            ],
-            )
-        )
-    );
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: size.height * 0.01),
+                    const Text(
+                      'JustChoose',
+                      style: TextStyle(fontSize: 45.0, color: Colors.white54),
+                    ),
+                    SizedBox(height: size.height * 0.1),
+                    SizedBox(
+                      width: size.width * 0.6,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          result == null
+                              ? Navigator.pushNamed(
+                                  context, Constants.signInNavigate)
+                              : Navigator.pushReplacementNamed(
+                                  context, Constants.homeNavigate);
+                        },
+                        child: Text(Constants.textStart),
+                        style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(
+                                Constants.kPrimaryColor),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Constants.kBlackColor),
+                            side: MaterialStateProperty.all<BorderSide>(
+                                BorderSide.none)),
+                      ),
+                    ),
+                    SizedBox(
+                      width: size.width * 0.6,
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: Text(
+                          Constants.textSignIn,
+                          style: TextStyle(color: Constants.kBlackColor),
+                        ),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Constants.kGreyColor),
+                            side: MaterialStateProperty.all<BorderSide>(
+                                BorderSide.none)),
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.2),
+                    SizedBox(
+                      width: size.width * 0.6,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, Constants.homeNavigate);
+                        },
+                        child: Text("Вход без аутентификации"),
+                        style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(
+                                Constants.kPrimaryColor),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Constants.kDarkGreyColor),
+                            side: MaterialStateProperty.all<BorderSide>(
+                                BorderSide.none)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ])));
   }
 }
