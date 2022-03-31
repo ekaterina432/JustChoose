@@ -181,14 +181,50 @@ class Description extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child:Text(recipeModel.description + " " + recipeModel.nutrition['carbs'][1],
+      padding: EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+      Center(
+      child:Container(
+      height: 4,
+        width: 40,
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.3),
+          borderRadius: BorderRadius.circular(4),
+        ),
+      ),
+    ),
+    Text(recipeModel.description,
         textAlign: TextAlign.justify,
         style: TextStyle(
           fontWeight: FontWeight.w500,
           height: 1.3,
         )
-      )
+      ),
+    Center(
+      child:Container(
+        height: 4,
+        width: 40,
+        decoration: BoxDecoration(
+        color: Colors.black.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(4),
+        ),
+      ),
+    ),
+    Text("\n\n\n" +
+        "Калорийность:  " + recipeModel.nutrition['kcal'] + "\n" +
+        "Белки:         " + recipeModel.nutrition['proteins'][1] + "\n" +
+        "Жиры:          " + recipeModel.nutrition['fats'][1] + "\n" +
+        "Углеводы:      " + recipeModel.nutrition['carbs'][1],
+        textAlign: TextAlign.justify,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          height: 1.3,
+        )
+    )
+    ]
+    )
     );
   }
 }
