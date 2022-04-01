@@ -3,6 +3,8 @@ import 'package:flutproj2/categories/final.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/constants.dart';
+
 class Category extends StatefulWidget{
   const Category({Key? key}) : super(key: key);
   @override
@@ -12,6 +14,7 @@ class _CategoryState extends State<Category>{
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar:
       AppBar(
@@ -32,63 +35,96 @@ class _CategoryState extends State<Category>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/firstCourse');
 
-                          ElevatedButton(onPressed: (){
-                            Navigator.pushNamed( context, '/firstCourse');
-                          },
+                              },
+                              child: Text("Первое блюдо"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
-                              child: const  Text('Первое блюдо', style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/secondCourse');
 
-                          ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/secondCourse');
-                          },
+                              },
+                              child: Text("Второе блюдо"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Второе блюдо", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/deserts');
 
-                          ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/deserts');
-                          },
+                              },
+                              child: Text("Десерты"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Десерты", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
-
-                          ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, '/snacks');
-                          },
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {Navigator.pushNamed(context, '/snacks');
+                              },
+                              child: Text("Закуски"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Закуски", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('drinks', isEqualTo:true))
-                            ));
-                          },
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('drinks', isEqualTo:true))
+                                    ));
+                              },
+                              child: Text("Напитки"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Напитки", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
                         ]
                     )

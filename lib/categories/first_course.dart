@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutproj2/categories/final.dart';
 
+import '../utils/constants.dart';
+
 
 class FirstCourse extends StatefulWidget{
   const FirstCourse({Key? key}) : super(key: key);
@@ -14,6 +16,8 @@ class _FirstCourseState extends State<FirstCourse>{
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar:
       AppBar(
@@ -34,36 +38,47 @@ class _FirstCourseState extends State<FirstCourse>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('classic', isEqualTo:true)
+                                  )));
 
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('classic', isEqualTo:true)
-                                )
-                            ));
-                          },
+                              },
+                              child: Text("Классика"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
-                              child: const  Text('Классика', style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('unusual', isEqualTo:true)
-                                  )
-                                ));
-                          },
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('unusual', isEqualTo:true)
+                                      )));
+
+                              },
+                              child: Text("Нестандартное"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Нестандартное", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
                         ]
                     )

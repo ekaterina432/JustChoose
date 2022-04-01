@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutproj2/categories/final.dart';
 
+import '../utils/constants.dart';
+
 class Fried extends StatefulWidget{
   const Fried({Key? key}) : super(key: key);
   @override
@@ -13,6 +15,7 @@ class _FriedState extends State<Fried>{
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar:
       AppBar(
@@ -33,50 +36,68 @@ class _FriedState extends State<Fried>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('meat', isEqualTo:true)
-                            )
-                                ));
-                          },
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('meat', isEqualTo:true)
+                                      )));
+
+                              },
+                              child: Text("Из мяса и птицы"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
-                              child: const  Text('Из мяса и птицы', style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('seafood', isEqualTo:true)
-                            )
-                                ));
-                          },
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('seafood', isEqualTo:true)
+                                      )));
+
+                              },
+                              child: Text("Из рыбы и морепродуктов"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Из рыбы и морепродуктов", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('vegetables', isEqualTo:true)
-                            )
-                                ));
-                          },
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('fried', isEqualTo:true).where('vegetables', isEqualTo:true)
+                                      )));
+
+                              },
+                              child: Text("Из овощей"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Из овощей", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
                         ]
                     )

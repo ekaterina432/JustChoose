@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutproj2/models/category_model.dart';
 import 'package:flutproj2/categories/final.dart';
 
+import '../utils/constants.dart';
+
 
 class Snack extends StatefulWidget{
   const Snack({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class _SnackState extends State<Snack>{
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar:
       AppBar(
@@ -33,35 +36,45 @@ class _SnackState extends State<Snack>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children:[
-
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('snacks', isEqualTo: true).where('hot', isEqualTo: true), ),
-                                ));
-                          },
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('snacks', isEqualTo: true).where('hot', isEqualTo: true), ),
+                                  ));
+                              },
+                              child: Text("Горячие"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all( const TextStyle(fontSize: 20))),
-                              child: const Text("Горячие", style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
-
-                          ElevatedButton(onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('snacks', isEqualTo: true).where('cold', isEqualTo: true), ),
-                                ));
-                          },
+                          SizedBox(
+                            width: size.width * 0.6,
+                            child: OutlinedButton(
+                              onPressed: () {Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('snacks', isEqualTo: true).where('cold', isEqualTo: true), ),
+                                  ));
+                              },
+                              child: Text("Холодные"),
                               style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 20))),
-                              child: const  Text('Холодные', style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white))),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kBrownColor),
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                      Constants.kGreyColor),
+                                  side: MaterialStateProperty.all<BorderSide>(
+                                      BorderSide.none)),
+                            ),
+                          ),
                           const Padding(padding: EdgeInsets.only(top:20),),
                         ]
                     )

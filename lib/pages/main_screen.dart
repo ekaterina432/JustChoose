@@ -1,5 +1,4 @@
 import '../models/favorites_list.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutproj2/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class WelcomePage extends StatelessWidget {
                     SizedBox(height: size.height * 0.01),
                     const Text(
                       'JustChoose',
-                      style: TextStyle(fontSize: 45.0, color: Colors.white54),
+                      style: TextStyle(fontSize: 45.0, color: Colors.white),
                     ),
                     SizedBox(height: size.height * 0.1),
                     SizedBox(
@@ -68,7 +67,7 @@ class WelcomePage extends StatelessWidget {
                                 BorderSide.none)),
                       ),
                     ),
-                    SizedBox(height: size.height * 0.2),
+                    SizedBox(height: size.height * 0.01),
                     SizedBox(
                       width: size.width * 0.6,
                       child: OutlinedButton(
