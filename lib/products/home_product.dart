@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/recipe_model_db.dart';
-import 'package:flutproj2/query_cache_processing.dart';
 import 'package:flutproj2/ui/ingredient_search_field.dart';
 import 'package:flutter/material.dart';
 

@@ -1,8 +1,6 @@
 import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutproj2/models/recipe_model_db.dart';
-import 'package:flutproj2/query_cache_processing.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';

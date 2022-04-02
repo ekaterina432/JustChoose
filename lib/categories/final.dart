@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutproj2/models/category_model.dart';
-import 'package:flutproj2/models/recipe_model.dart';
 import 'package:flutproj2/ui/recipe_list_db.dart';
 import 'package:flutter/material.dart';
-import 'package:flutproj2/ui/recipes_list.dart';
+
 class Final extends StatefulWidget{
   final Query <Map<String,dynamic>> query;
   const Final({Key? key, required this.query}) : super(key: key);

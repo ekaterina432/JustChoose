@@ -33,7 +33,7 @@ class SignInPage extends StatelessWidget {
             Constants.textSmallSignIn,
             style: TextStyle(color: Constants.kDarkGreyColor),
           ),
-          GoogleSignIn(),
+          GoogleSignInButton(),
           buildRowDivider(size: size),
           Padding(padding: EdgeInsets.only(bottom: size.height * 0.02)),
           SizedBox(
@@ -115,23 +115,23 @@ class SignInPage extends StatelessWidget {
   }
 }
 
-class GoogleSignIn extends StatefulWidget {
-  GoogleSignIn({Key? key}) : super(key: key);
+class GoogleSignInButton extends StatefulWidget {
+  GoogleSignInButton({Key? key}) : super(key: key);
 
   @override
-  _GoogleSignInState createState() => _GoogleSignInState();
+  _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
 }
 
-class _GoogleSignInState extends State<GoogleSignIn> {
+class _GoogleSignInButtonState extends State<GoogleSignInButton> {
   bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return  !isLoading? SizedBox(
-      width: size.width * 0.8,
+      width: size.width * 0.6,
       child: OutlinedButton.icon(
-        icon: FaIcon(FontAwesomeIcons.google),
+        icon: FaIcon(FontAwesomeIcons.google, color: Colors.orange),
         onPressed: () async {
           setState(() {
             isLoading = true;
@@ -159,7 +159,7 @@ class _GoogleSignInState extends State<GoogleSignIn> {
                 MaterialStateProperty.all<Color>(Constants.kGreyColor),
             side: MaterialStateProperty.all<BorderSide>(BorderSide.none)),
       ),
-    ) : CircularProgressIndicator();
+    ) : CircularProgressIndicator(color: Colors.orange,);
   }
 
   void showMessage(String message) {

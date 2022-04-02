@@ -1,6 +1,5 @@
-//import 'dart:js';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutproj2/pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,10 +12,8 @@ import 'package:flutproj2/products/home_product.dart';
 import 'package:flutproj2/categories/fry.dart';
 import 'package:flutproj2/categories/baked.dart';
 import 'package:flutproj2/categories/category.dart';
-import 'package:flutproj2/categories/plug.dart';
 import 'package:flutproj2/categories/second_course.dart';
 import 'package:flutproj2/categories/first_course.dart';
-import 'package:flutproj2/models/category_model.dart';
 import 'package:flutproj2/categories/snacks.dart';
 import 'package:flutproj2/categories/drinks.dart';
 import 'package:flutproj2/categories/deserts.dart';
@@ -47,7 +44,6 @@ void main() async {
           '/favorites':(context) => FavoritesPage(),
           '/friedState':(context) => Fried(),
           '/baked':(context) => Baked(),
-          '/plug':(context) => Plug(),
           '/firstCourse':(context) => FirstCourse(),
           '/secondCourse':(context) => SecondCourse(),
           '/snacks':(context) => Snack(),

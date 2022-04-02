@@ -3,8 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutproj2/models/recipe_model_db.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:provider/provider.dart';
-import 'package:flutproj2/models/recipe_model.dart';
+
 
 class FavoritesModel extends ChangeNotifier{
   final List<String> _recipesIds = [];

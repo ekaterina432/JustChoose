@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutproj2/models/recipe_model.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:flutproj2/models/favorites_list.dart';
 import 'package:provider/provider.dart';
+import "dart:math" show pi;
 
 import '../models/ingredient_model.dart';
 import '../models/recipe_model_db.dart';
@@ -16,12 +16,40 @@ class RecipeDetails extends StatefulWidget{
   @override
   _RecipeDetailsState createState() =>_RecipeDetailsState();
 }
-class _RecipeDetailsState extends State<RecipeDetails>{
+class _RecipeDetailsState extends State<RecipeDetails> with TickerProviderStateMixin{
+  late TabController _tabController;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(() {
+      setState(() {
+
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Iterable<String> favoritesIds = context.watch<FavoritesModel>().getIds();
     Size size = MediaQuery.of(context).size;
+    List<Tab> tabs = [
+      Tab(text: "Описание".toUpperCase()),
+      Tab(text: "Ингредиенты".toUpperCase()),
+      Tab(text: "Шаги".toUpperCase()),
+    ];
+    List<Widget> tabsContent =  [
+      Description(recipeModel: widget.recipeModel),
+      Ingridients(ingredients: widget.recipeModel.ingredients),
+      Steps(steps: widget.recipeModel.steps),
+    ];
     return Scaffold(
+      floatingActionButton: Visibility(
+        visible: widget.recipeModel.hints.isNotEmpty && _tabController.index > 0,
+        child: Container(
+          height: 50,
+          child: HintsButton(hints: widget.recipeModel.hints),
+        ),
+      ),
       body: SlidingUpPanel(
         minHeight: size.height/2,
         maxHeight: size.height/1.2,
@@ -75,7 +103,7 @@ class _RecipeDetailsState extends State<RecipeDetails>{
           ),
         ),
         panel: Padding(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.only(left: 12, top: 12, right: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -129,47 +157,28 @@ class _RecipeDetailsState extends State<RecipeDetails>{
               SizedBox(height: 8,),
               Divider(color:Colors.black.withOpacity(0.3)),
               Expanded(
-                child: DefaultTabController(
-                  length: 3,
-                  initialIndex: 0,
-                  child: Column(
-                    children: [
-                      TabBar(
-                        labelColor: Colors.black,
-                        labelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                        unselectedLabelColor: Colors.black.withOpacity(0.3),
-                        labelPadding: EdgeInsets.symmetric(horizontal: 0),
-                        indicator: DotIndicator (
-                          color: Theme.of(context).primaryColor,
-                          distanceFromCenter: 15,
-                        ),
-                        tabs: [
-                          Container(
-                            child: Tab(text: "Описание".toUpperCase()),
-                          ),
-                          Container(
-                            child: Tab(text: "Ингредиенты".toUpperCase()),
-                          ),
-                          Container(
-                            child: Tab(text: "Шаги".toUpperCase()),
-                          ),
-                          //Visibility( visible: !widget.recipeModel.hints.isEmpty,child: )
-                        ],
+                child: Column(
+                  children: [
+                    TabBar(
+                      labelColor: Colors.black,
+                      labelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                      unselectedLabelColor: Colors.black.withOpacity(0.3),
+                      labelPadding: EdgeInsets.symmetric(horizontal: 0),
+                      indicator: DotIndicator (
+                        color: Theme.of(context).primaryColor,
+                        distanceFromCenter: 15,
                       ),
-                      SizedBox(height: 8,),
-                      Expanded(
-                        child: TabBarView(
-                          children: [
-                            Description(recipeModel: widget.recipeModel),
-                            Ingridients(ingredients: widget.recipeModel.ingredients),
-                            Steps(steps: widget.recipeModel.steps),
-                            //Visibility( visible: !widget.recipeModel.hints.isEmpty,child: )
-                          ],
-                        ),
-                      )
-                    ],
-                  )
-                )
+                      tabs: tabs,
+                      controller: _tabController,
+                    ),
+                    SizedBox(height: 8,),
+                    Expanded(
+                      child: TabBarView(
+                        controller: _tabController,
+                        children: tabsContent
+                      ),
+                    )
+                  ],)
               )
             ],
           ),
@@ -188,7 +197,7 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.only(left: 12, right: 12),
       child: ListView(
           //crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -295,7 +304,7 @@ class Ingridients extends StatelessWidget{
               },
               itemCount: ingredients.length
             )
-          )
+          ),
         ],
       )
     );
@@ -340,9 +349,64 @@ class Steps extends StatelessWidget {
               },
               itemCount: steps.length
             )
-          )
+          ),
         ],
       ),
     );
   }
+}
+
+class HintsButton extends StatelessWidget{
+  List<String> hints;
+  HintsButton({required this.hints});
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      backgroundColor: Colors.orange,
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (_)=>AlertDialog(
+            title: Text("Советы"),
+            content: ListView.separated(
+                shrinkWrap: true,
+                physics:AlwaysScrollableScrollPhysics(),
+                separatorBuilder: (context, index){
+                  return Divider(color: Colors.black.withOpacity(0.4));
+                },
+                itemBuilder: (context, index){
+                  return Padding(
+                      padding: EdgeInsets.only(bottom: 6),
+                      child:Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top:5),
+                            child: Container(width: 6, height: 6,
+                              decoration: BoxDecoration(color: Theme.of(context).primaryColor, shape: BoxShape.circle),),
+                          ),
+                          Expanded(child: Text("   " +
+                              hints[index],
+                            softWrap: true,
+                            textAlign: TextAlign.justify,
+                          ),)
+                        ],
+                      )
+                  );
+                },
+                itemCount: hints.length
+            ),
+          )
+        );
+      },
+      child: Transform.rotate(
+        angle: pi,
+        child:const Icon(
+          Icons.wb_incandescent,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
 }

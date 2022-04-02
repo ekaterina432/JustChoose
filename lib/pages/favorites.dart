@@ -1,11 +1,6 @@
-import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutproj2/models/recipe_model.dart';
 import 'package:flutproj2/models/recipe_model_db.dart';
-import 'package:flutproj2/query_cache_processing.dart';
 import 'package:flutproj2/ui/recipe_card_db.dart';
 import 'package:flutter/material.dart';
-import 'package:flutproj2/ui/recipes_list.dart';
 import 'package:provider/provider.dart';
 import 'package:flutproj2/models/favorites_list.dart';
 
