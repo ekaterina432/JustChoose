@@ -87,7 +87,7 @@ class Home extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, '/favorites');
                       },
-                      child: Text("Избрранное"),
+                      child: Text("Избранное"),
                       style: ButtonStyle(
                           foregroundColor: MaterialStateProperty.all<Color>(
                               Constants.kBrownColor),
