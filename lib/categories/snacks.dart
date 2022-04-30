@@ -45,13 +45,6 @@ class _SnackState extends State<Snack>{
                                   ));
                               },
                               child: Text("Горячие"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -65,13 +58,6 @@ class _SnackState extends State<Snack>{
                                   ));
                               },
                               child: Text("Холодные"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),

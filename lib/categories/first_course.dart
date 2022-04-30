@@ -47,13 +47,6 @@ class _FirstCourseState extends State<FirstCourse>{
 
                               },
                               child: Text("Классика"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -68,13 +61,6 @@ class _FirstCourseState extends State<FirstCourse>{
 
                               },
                               child: Text("Нестандартное"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),

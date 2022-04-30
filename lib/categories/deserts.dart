@@ -46,13 +46,6 @@ class _DesertState extends State<Desert>{
 
                               },
                               child: Text("На сковороде"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -67,13 +60,6 @@ class _DesertState extends State<Desert>{
 
                               },
                               child: Text("В духовке"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -88,13 +74,6 @@ class _DesertState extends State<Desert>{
 
                               },
                               child: Text("Без выпекания и жарки"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),

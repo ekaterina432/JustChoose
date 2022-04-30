@@ -42,13 +42,6 @@ class _CategoryState extends State<Category>{
 
                               },
                               child: Text("Первое блюдо"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -60,13 +53,6 @@ class _CategoryState extends State<Category>{
 
                               },
                               child: Text("Второе блюдо"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -78,13 +64,6 @@ class _CategoryState extends State<Category>{
 
                               },
                               child: Text("Десерты"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -94,13 +73,6 @@ class _CategoryState extends State<Category>{
                               onPressed: () {Navigator.pushNamed(context, '/snacks');
                               },
                               child: Text("Закуски"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -115,13 +87,6 @@ class _CategoryState extends State<Category>{
                                     ));
                               },
                               child: Text("Напитки"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),

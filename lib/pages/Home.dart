@@ -62,13 +62,6 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                         Navigator.pushNamed(context, '/recipes_book');
                       },
                       child: Text("Книга рецептов"),
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(
-                            Constants.kBrownColor),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Constants.kGreyColor),
-                        side: MaterialStateProperty.all<BorderSide>(
-                            BorderSide.none)),
                     )),
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -80,13 +73,6 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                         Navigator.pushNamed(context, '/home_category');
                       },
                       child: Text("Выбор по категориям"),
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(
-                            Constants.kBrownColor),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Constants.kGreyColor),
-                        side: MaterialStateProperty.all<BorderSide>(
-                            BorderSide.none)),
                     )),
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -98,13 +84,6 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                         Navigator.pushNamed(context, '/home_product');
                       },
                       child: Text("Выбор по продуктам"),
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(
-                            Constants.kBrownColor),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Constants.kGreyColor),
-                        side: MaterialStateProperty.all<BorderSide>(
-                            BorderSide.none)),
                     )),
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -116,13 +95,6 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
                         Navigator.pushNamed(context, '/favorites');
                       },
                       child: Text("Избранное"),
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(
-                            Constants.kBrownColor),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Constants.kGreyColor),
-                        side: MaterialStateProperty.all<BorderSide>(
-                            BorderSide.none)),
                     ))
               ]))
         ])));

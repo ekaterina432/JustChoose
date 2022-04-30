@@ -49,6 +49,17 @@ void main() async {
           '/deserts':(context) => Desert(),
         },
         theme: ThemeData(
+          outlinedButtonTheme: OutlinedButtonThemeData(
+              style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all<Color>(Colors.orange.withOpacity(0.2)),
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      Constants.kBrownColor),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Constants.kGreyColor),
+                  side: MaterialStateProperty.all<BorderSide>(
+                      BorderSide.none)
+              )
+          ),
           primaryColor: Colors.orange,
             colorScheme: ColorScheme.fromSwatch()
                 .copyWith(secondary: Colors.orange),

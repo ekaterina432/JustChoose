@@ -45,13 +45,6 @@ class _FriedState extends State<Fried>{
 
                               },
                               child: Text("Из мяса и птицы"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -66,13 +59,6 @@ class _FriedState extends State<Fried>{
 
                               },
                               child: Text("Из рыбы и морепродуктов"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
@@ -87,13 +73,6 @@ class _FriedState extends State<Fried>{
 
                               },
                               child: Text("Из овощей"),
-                              style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kBrownColor),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                      Constants.kGreyColor),
-                                  side: MaterialStateProperty.all<BorderSide>(
-                                      BorderSide.none)),
                             ),
                           ),
                           const Padding(padding: EdgeInsets.only(top:20),),
