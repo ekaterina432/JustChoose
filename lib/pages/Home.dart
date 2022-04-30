@@ -1,12 +1,40 @@
 import 'package:flutter/material.dart';
+import '../models/favorites_list.dart';
 import '../utils/constants.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+  _HomeState createState() => _HomeState();
+}
+class _HomeState extends State<Home> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addObserver(this);
+  }
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async{
+    if (state == AppLifecycleState.paused){
+      await FavoritesModel().saveFavorites();
+    }
+  }
+
+  @override
+  Future<bool> didPopRoute() async {
+    await FavoritesModel().saveFavorites();
+    return Future<bool>.value(false);
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    FavoritesModel().loadFavorites();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Меню'),
@@ -35,12 +63,12 @@ class Home extends StatelessWidget {
                       },
                       child: Text("Книга рецептов"),
                       style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(
-                              Constants.kBrownColor),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Constants.kGreyColor),
-                          side: MaterialStateProperty.all<BorderSide>(
-                              BorderSide.none)),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Constants.kBrownColor),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Constants.kGreyColor),
+                        side: MaterialStateProperty.all<BorderSide>(
+                            BorderSide.none)),
                     )),
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -53,12 +81,12 @@ class Home extends StatelessWidget {
                       },
                       child: Text("Выбор по категориям"),
                       style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(
-                              Constants.kBrownColor),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Constants.kGreyColor),
-                          side: MaterialStateProperty.all<BorderSide>(
-                              BorderSide.none)),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Constants.kBrownColor),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Constants.kGreyColor),
+                        side: MaterialStateProperty.all<BorderSide>(
+                            BorderSide.none)),
                     )),
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -71,12 +99,12 @@ class Home extends StatelessWidget {
                       },
                       child: Text("Выбор по продуктам"),
                       style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(
-                              Constants.kBrownColor),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Constants.kGreyColor),
-                          side: MaterialStateProperty.all<BorderSide>(
-                              BorderSide.none)),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Constants.kBrownColor),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Constants.kGreyColor),
+                        side: MaterialStateProperty.all<BorderSide>(
+                            BorderSide.none)),
                     )),
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -89,12 +117,12 @@ class Home extends StatelessWidget {
                       },
                       child: Text("Избранное"),
                       style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(
-                              Constants.kBrownColor),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Constants.kGreyColor),
-                          side: MaterialStateProperty.all<BorderSide>(
-                              BorderSide.none)),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Constants.kBrownColor),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Constants.kGreyColor),
+                        side: MaterialStateProperty.all<BorderSide>(
+                            BorderSide.none)),
                     ))
               ]))
         ])));

@@ -1,6 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutproj2/pages/sign_in_page.dart';
+import 'package:flutproj2/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutproj2/pages/Home.dart';
@@ -28,7 +27,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FavoritesModel().LoadFavorites();
   runApp(
     ChangeNotifierProvider(
       create: (context) => FavoritesModel(),
