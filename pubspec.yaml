@@ -45,7 +45,7 @@ dependencies:
   flutterfire_ui: ^0.3.5
   google_sign_in: ^5.2.4
   flutter_typeahead:
-
+  page_transition:
 
 dev_dependencies:
   flutter_test:

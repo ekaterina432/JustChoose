@@ -1,6 +1,7 @@
 import 'package:flutproj2/pages/sign_in_page.dart';
 import 'package:flutproj2/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:flutproj2/pages/Home.dart';
 import 'package:flutproj2/pages/main_screen.dart';
@@ -19,8 +20,10 @@ import 'package:flutproj2/categories/deserts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-
-
+PageTransition categoryTransition(Widget page) => PageTransition(
+  child: page,
+  type: PageTransitionType.fade,
+);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,22 +34,44 @@ void main() async {
     ChangeNotifierProvider(
       create: (context) => FavoritesModel(),
       child:MaterialApp(
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/home_category':
+              return categoryTransition(Category());
+            case '/friedState':
+              return categoryTransition(Fried());
+            case '/baked':
+              return categoryTransition(Baked());
+            case '/firstCourse':
+              return categoryTransition(FirstCourse());
+            case '/secondCourse':
+              return categoryTransition(SecondCourse());
+            case '/snacks':
+              return categoryTransition(Snack());
+            case '/drinks':
+              return categoryTransition(Drink());
+            case '/deserts':
+              return categoryTransition(Desert());
+            default:
+              return null;
+          }
+        },
         initialRoute: '/',
         routes: {
           '/':(context) => WelcomePage(),
           '/sign-in' : (context) => SignInPage(),
           '/todo':(context) => Home(),
           '/recipes_book':(context) => RecipeBook(),
-          '/home_category': (context) => Category(),
           '/home_product': (context) => HomeProduct (),
           '/favorites':(context) => FavoritesPage(),
-          '/friedState':(context) => Fried(),
-          '/baked':(context) => Baked(),
-          '/firstCourse':(context) => FirstCourse(),
-          '/secondCourse':(context) => SecondCourse(),
-          '/snacks':(context) => Snack(),
-          '/drinks':(context) => Drink(),
-          '/deserts':(context) => Desert(),
+          //'/home_category': (context) => Category(),
+          //'/friedState':(context) => Fried(),
+          //'/baked':(context) => Baked(),
+          //'/firstCourse':(context) => FirstCourse(),
+          //'/secondCourse':(context) => SecondCourse(),
+          //'/snacks':(context) => Snack(),
+          //'/drinks':(context) => Drink(),
+          //'/deserts':(context) => Desert(),
         },
         theme: ThemeData(
           outlinedButtonTheme: OutlinedButtonThemeData(
