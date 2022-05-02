@@ -39,6 +39,7 @@ class FavoritesModel extends ChangeNotifier{
     } else {
       await _loadFromFile();
     }
+    notifyListeners();
   }
 
   Future<void> _loadFromFile() async{
@@ -58,17 +59,17 @@ class FavoritesModel extends ChangeNotifier{
   Future<void> saveFavorites() async{
     if (user != null){
       if ((await FirebaseFirestore.instance.collection("users").doc(user!.uid).get()).exists){
-        FirebaseFirestore.instance.collection("users").doc(user!.uid).update({
+        await FirebaseFirestore.instance.collection("users").doc(user!.uid).update({
           "favorites_ids": _recipesIds
         });
       } else{
-        FirebaseFirestore.instance.collection("users").doc(user!.uid).set({
+        await FirebaseFirestore.instance.collection("users").doc(user!.uid).set({
           "favorites_ids": _recipesIds
         });
       }
     }
     File file = await _getFile();
-    file.writeAsString(_recipesIds.toString());
+    await file.writeAsString(_recipesIds.toString());
   }
 
   Future<RecipeModelDB> _getRecipe(String id) async{
