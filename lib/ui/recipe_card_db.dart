@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutproj2/models/recipe_model_db.dart';
 import 'package:flutproj2/pages/recipe_details.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,10 @@ class _RecipeCardDBState extends State<RecipeCardDB> {
   }
   @override
   Widget build(BuildContext context) {
+    Random rnd = Random();
+    String heroTag = Random().nextInt(999999).toString().padLeft(6, '0') + '_'
+        + widget.hashCode.toString() + '_'
+        + Random().nextInt(999999).toString().padLeft(6, '0');
     Iterable<String> favoritesIds = context.watch<FavoritesModel>().getIds();
     favoriteIcon = Icon(favoritesIds.contains(widget.recipeModel.id)? Icons.favorite:Icons.favorite_border,
         color: Theme.of(context).primaryColor,
@@ -41,7 +47,7 @@ class _RecipeCardDBState extends State<RecipeCardDB> {
         child: Stack(
           children: [
             Hero(
-              tag: widget.recipeModel.imgPath,
+              tag: heroTag,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.black,
@@ -158,6 +164,7 @@ class _RecipeCardDBState extends State<RecipeCardDB> {
            builder:
              (context) =>
              RecipeDetails(
+               heroTag: heroTag,
                recipeModel: widget.recipeModel,
                refreshFavoriteIcon: _refreshFavoriteIcon,
              ),

@@ -23,7 +23,6 @@ class _RecipeBookState extends State<RecipeBook>{
     super.initState();
     _teController.addListener(() {
       List<String> searchWords = _teController.text.toLowerCase().split(new RegExp(r'\s+'));
-      print(searchWords);
       if (searchWords[0].length >= 2){
         setState(() {
           _searchActive = true;

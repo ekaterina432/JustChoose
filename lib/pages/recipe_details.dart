@@ -11,8 +11,9 @@ import 'package:pie_chart/pie_chart.dart';
 
 class RecipeDetails extends StatefulWidget{
   VoidCallback refreshFavoriteIcon;
+  Object heroTag;
   final RecipeModelDB recipeModel;
-  RecipeDetails({required this.recipeModel,required this.refreshFavoriteIcon});
+  RecipeDetails({required this.heroTag, required this.recipeModel,required this.refreshFavoriteIcon});
   @override
   _RecipeDetailsState createState() =>_RecipeDetailsState();
 }
@@ -66,7 +67,7 @@ class _RecipeDetailsState extends State<RecipeDetails> with TickerProviderStateM
                   Align(
                     alignment: Alignment.topCenter,
                     child: Hero(
-                      tag: widget.recipeModel.imgPath,
+                      tag: widget.heroTag,
                       child: Container(
                         height: size.height/2 + 50,
                         width: double.infinity,

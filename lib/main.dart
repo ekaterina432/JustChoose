@@ -1,6 +1,7 @@
 import 'package:flutproj2/pages/sign_in_page.dart';
 import 'package:flutproj2/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:flutproj2/pages/Home.dart';
@@ -62,7 +63,7 @@ void main() async {
           '/sign-in' : (context) => SignInPage(),
           '/todo':(context) => Home(),
           '/recipes_book':(context) => RecipeBook(),
-          '/home_product': (context) => HomeProduct (),
+          '/home_product': (context) => HomeProduct(),
           '/favorites':(context) => FavoritesPage(),
           //'/home_category': (context) => Category(),
           //'/friedState':(context) => Fried(),
@@ -92,7 +93,8 @@ void main() async {
             cursorColor: Colors.brown,
             selectionHandleColor: Colors.orange
           ),
-          appBarTheme: AppBarTheme(color: Colors.brown)
+          appBarTheme: const AppBarTheme(color: Colors.brown),
+          bottomAppBarColor: Colors.brown
         )
       )
     )

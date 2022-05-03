@@ -46,6 +46,7 @@ dependencies:
   google_sign_in: ^5.2.4
   flutter_typeahead:
   page_transition:
+  convex_bottom_bar:
 
 dev_dependencies:
   flutter_test:
@@ -122,6 +123,9 @@ flutter:
          - asset: fonts/Roboto-Thin.ttf
          - asset: fonts/Roboto-ThinItalic.ttf
            weight: 700
+     - family: CustomIcons
+       fonts:
+         - asset: assets/CustomIcons.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
