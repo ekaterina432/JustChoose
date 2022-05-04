@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/categories/final.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../utils/constants.dart';
 
@@ -39,12 +40,14 @@ class _FirstCourseState extends State<FirstCourse>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () {Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                  builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('classic', isEqualTo:true)
-                                  )));
-
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('first_course', isEqualTo:true).where('classic', isEqualTo:true))
+                                  )
+                                );
                               },
                               child: Text("Классика"),
                             ),
@@ -53,12 +56,14 @@ class _FirstCourseState extends State<FirstCourse>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () {Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('first_course', isEqualTo:true).where('unusual', isEqualTo:true)
-                                      )));
-
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('first_course', isEqualTo:true).where('unusual', isEqualTo:true))
+                                  )
+                                );
                               },
                               child: Text("Нестандартное"),
                             ),

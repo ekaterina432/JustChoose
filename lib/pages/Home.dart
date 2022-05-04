@@ -14,17 +14,20 @@ class Home extends StatefulWidget {
 }
 class _HomeState extends State<Home> with WidgetsBindingObserver {
   int _selectedIndex =0;
-  List<Widget> _pages = [
-    RecipeBook(),
-    Category(),
-    HomeProduct(),
-    FavoritesPage(),
-  ];
+  late GlobalKey _categoryNavigatorKey;
+  late List<Widget> _pages;
+
 
   @override
   void initState() {
     super.initState();
-    print("initState");
+    _categoryNavigatorKey = GlobalKey();
+    _pages = [
+      RecipeBook(),
+      Category(navigatorKey: _categoryNavigatorKey),
+      HomeProduct(),
+      FavoritesPage(),
+    ];
     FavoritesModel().loadFavorites();
     WidgetsBinding.instance!.addObserver(this);
   }
@@ -37,14 +40,12 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
   @override
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async{
     if (state == AppLifecycleState.paused){
-      print("paused");
       await FavoritesModel().saveFavorites();
     }
   }
 
   @override
   Future<bool> didPopRoute() async {
-    print("didPopRoute");
     await FavoritesModel().saveFavorites();
     return Future<bool>.value(false);
   }
@@ -53,10 +54,6 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        /*appBar: AppBar(
-          title: const Text('Меню'),
-          centerTitle: true,
-        ),*/
         bottomNavigationBar: ConvexAppBar(
           onTap: (int index) {
             setState(() {
@@ -75,74 +72,20 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
             TabItem(icon:Icon(Icons.favorite, size: 25, color: Colors.white,)),
           ],
         ),
-        body: IndexedStack(
-          index: _selectedIndex,
-          children: _pages,
+        body: WillPopScope(
+          onWillPop: () async{
+            if (_selectedIndex == 1){
+              bool res  = ! await Navigator.maybePop(_categoryNavigatorKey.currentState!.context);
+              print(res);
+              return res;
+            }
+            return Future<bool>.value(true);
+          },
+          child: IndexedStack(
+            index: _selectedIndex,
+            children: _pages,
+          )
         )
-          /*child: Stack(children: <Widget>[
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/background.jpg"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: size.width * 0.6,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/recipes_book');
-                      },
-                      child: Text("Книга рецептов"),
-                    )
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                  ),
-                  SizedBox(
-                    width: size.width * 0.6,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/home_category');
-                      },
-                      child: Text("Выбор по категориям"),
-                    )
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                  ),
-                  SizedBox(
-                    width: size.width * 0.6,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/home_product');
-                      },
-                      child: Text("Выбор по продуктам"),
-                    )
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                  ),
-                  SizedBox(
-                    width: size.width * 0.6,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/favorites');
-                      },
-                      child: Text("Избранное"),
-                    )
-                  )
-                  ]
-              )
-            )
-          ])*/
-
     );
   }
 }

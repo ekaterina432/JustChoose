@@ -158,9 +158,8 @@ class _RecipeCardDBState extends State<RecipeCardDB> {
       onTapDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
       onTap:() {
         widget.recipeModel.getFullData();
-        Navigator.push(
-         context,
-         MaterialPageRoute(
+        Navigator.of(context, rootNavigator: true).push(
+          MaterialPageRoute(
            builder:
              (context) =>
              RecipeDetails(
@@ -168,7 +167,8 @@ class _RecipeCardDBState extends State<RecipeCardDB> {
                recipeModel: widget.recipeModel,
                refreshFavoriteIcon: _refreshFavoriteIcon,
              ),
-         ));
+          )
+        );
       }
     );
   }

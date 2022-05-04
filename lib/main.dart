@@ -35,44 +35,14 @@ void main() async {
     ChangeNotifierProvider(
       create: (context) => FavoritesModel(),
       child:MaterialApp(
-        onGenerateRoute: (settings) {
-          switch (settings.name) {
-            case '/home_category':
-              return categoryTransition(Category());
-            case '/friedState':
-              return categoryTransition(Fried());
-            case '/baked':
-              return categoryTransition(Baked());
-            case '/firstCourse':
-              return categoryTransition(FirstCourse());
-            case '/secondCourse':
-              return categoryTransition(SecondCourse());
-            case '/snacks':
-              return categoryTransition(Snack());
-            case '/drinks':
-              return categoryTransition(Drink());
-            case '/deserts':
-              return categoryTransition(Desert());
-            default:
-              return null;
-          }
-        },
         initialRoute: '/',
         routes: {
           '/':(context) => WelcomePage(),
           '/sign-in' : (context) => SignInPage(),
-          '/todo':(context) => Home(),
-          '/recipes_book':(context) => RecipeBook(),
+          '/home':(context) => Home(),
+/*          '/recipes_book':(context) => RecipeBook(),
           '/home_product': (context) => HomeProduct(),
-          '/favorites':(context) => FavoritesPage(),
-          //'/home_category': (context) => Category(),
-          //'/friedState':(context) => Fried(),
-          //'/baked':(context) => Baked(),
-          //'/firstCourse':(context) => FirstCourse(),
-          //'/secondCourse':(context) => SecondCourse(),
-          //'/snacks':(context) => Snack(),
-          //'/drinks':(context) => Drink(),
-          //'/deserts':(context) => Desert(),
+          '/favorites':(context) => FavoritesPage(),*/
         },
         theme: ThemeData(
           outlinedButtonTheme: OutlinedButtonThemeData(

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/categories/final.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../utils/constants.dart';
 
@@ -38,12 +39,14 @@ class _DesertState extends State<Desert>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () {Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('desserts', isEqualTo: true).where('fried', isEqualTo: true), ),
-                                  ));
-
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('desserts', isEqualTo: true).where('fried', isEqualTo: true))
+                                  )
+                                );
                               },
                               child: Text("На сковороде"),
                             ),
@@ -52,12 +55,14 @@ class _DesertState extends State<Desert>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () {Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('desserts', isEqualTo: true).where('oven', isEqualTo: true), ),
-                                  ));
-
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('desserts', isEqualTo: true).where('oven', isEqualTo: true))
+                                  )
+                                );
                               },
                               child: Text("В духовке"),
                             ),
@@ -66,12 +71,14 @@ class _DesertState extends State<Desert>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () {Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('desserts', isEqualTo: true).where('without_heat', isEqualTo: true), ),
-                                  ));
-
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('desserts', isEqualTo: true).where('without_heat', isEqualTo: true))
+                                  )
+                                );
                               },
                               child: Text("Без выпекания и жарки"),
                             ),

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/categories/final.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../utils/constants.dart';
 class Baked extends StatefulWidget{
@@ -37,12 +38,13 @@ class _BakedState extends State<Baked>{
                             width: size.width * 0.6,
                             child: OutlinedButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('meat', isEqualTo:true)
-                                        )
-                                    ));
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('meat', isEqualTo:true))
+                                  )
+                                );
                               },
                               child: Text("Из мяса и птицы"),
                             ),
@@ -52,12 +54,13 @@ class _BakedState extends State<Baked>{
                             width: size.width * 0.6,
                             child: OutlinedButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('seafood', isEqualTo:true)
-                                        )
-                                    ));
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('seafood', isEqualTo:true))
+                                  )
+                                );
                               },
                               child: Text("Из рыбы и морепродуктов"),
                             ),
@@ -67,12 +70,13 @@ class _BakedState extends State<Baked>{
                             width: size.width * 0.6,
                             child: OutlinedButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('vegetables', isEqualTo: true)
-                                        )
-                                    ));
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('second_course', isEqualTo:true).where('baked', isEqualTo:true).where('vegetables', isEqualTo: true))
+                                  )
+                                );
                               },
                               child: Text("Из овощей"),
                             ),

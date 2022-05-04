@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutproj2/categories/baked.dart';
+import 'package:flutproj2/categories/fry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutproj2/categories/final.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../utils/constants.dart';
 
@@ -38,11 +41,14 @@ class _SecondCourseState extends State<SecondCourse>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () {Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('salad', isEqualTo:true)
-                                      )));
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('second_course', isEqualTo:true).where('salad', isEqualTo:true))
+                                  )
+                                );
                               },
                               child: Text("Салаты"),
                             ),
@@ -51,7 +57,13 @@ class _SecondCourseState extends State<SecondCourse>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () { Navigator.pushNamed(context, '/baked');
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: Baked()
+                                    )
+                                );
                               },
                               child: Text("Запеченное"),
                             ),
@@ -60,7 +72,13 @@ class _SecondCourseState extends State<SecondCourse>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () { Navigator.pushNamed(context, '/friedState');
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                    PageTransition(
+                                        type: PageTransitionType.fade,
+                                        child: Fried()
+                                    )
+                                );
                               },
                               child: Text("Жареное"),
                             ),
@@ -69,12 +87,14 @@ class _SecondCourseState extends State<SecondCourse>{
                           SizedBox(
                             width: size.width * 0.6,
                             child: OutlinedButton(
-                              onPressed: () {Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Final(query: FirebaseFirestore.instance.collection('recipes').where('second_course', isEqualTo:true).where('boiled_side_dishes', isEqualTo:true)
-                                      )
-                                  ));
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: Final(query: FirebaseFirestore.instance.collection('recipes')
+                                        .where('second_course', isEqualTo:true).where('boiled_side_dishes', isEqualTo:true))
+                                  )
+                                );
                               },
                               child: Text("Вареное и гарниры"),
                             ),

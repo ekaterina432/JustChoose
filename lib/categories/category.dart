@@ -1,12 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutproj2/categories/deserts.dart';
 import 'package:flutproj2/categories/final.dart';
 import 'package:flutproj2/categories/first_course.dart';
+import 'package:flutproj2/categories/second_course.dart';
+import 'package:flutproj2/categories/snacks.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../utils/constants.dart';
 
 class Category extends StatefulWidget{
-  const Category({Key? key}) : super(key: key);
+  final GlobalKey navigatorKey;
+  const Category({required this.navigatorKey, Key? key}) : super(key: key);
   @override
   _CategoryState createState() => _CategoryState();
 }
@@ -15,11 +20,12 @@ class _CategoryState extends State<Category>{
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    /*return Navigator(
+    return Navigator(
+      key: widget.navigatorKey,
       onGenerateRoute: (RouteSettings settings) {
         return MaterialPageRoute(
           settings: settings,
-          builder: (BuildContext context) {*/
+          builder: (BuildContext context) {
             return Scaffold(
               appBar:
               AppBar(
@@ -45,14 +51,12 @@ class _CategoryState extends State<Category>{
                                     width: size.width * 0.6,
                                     child: OutlinedButton(
                                       onPressed: () {
-                                        /*print("first");
-
                                         Navigator.of(context).push(
-                                          MaterialPageRoute(builder: (BuildContext context){
-                                            return FirstCourse();
-                                          })
-                                        );*/
-                                        Navigator.pushNamed(context, '/firstCourse');
+                                          PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: FirstCourse(),
+                                          )
+                                        );
                                       },
                                       child: Text("Первое блюдо"),
                                     ),
@@ -63,7 +67,12 @@ class _CategoryState extends State<Category>{
                                     width: size.width * 0.6,
                                     child: OutlinedButton(
                                       onPressed: () {
-                                        Navigator.pushNamed(context, '/secondCourse');
+                                        Navigator.of(context).push(
+                                          PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: SecondCourse(),
+                                          )
+                                        );
                                       },
                                       child: Text("Второе блюдо"),
                                     ),
@@ -74,7 +83,12 @@ class _CategoryState extends State<Category>{
                                     width: size.width * 0.6,
                                     child: OutlinedButton(
                                       onPressed: () {
-                                        Navigator.pushNamed(context, '/deserts');
+                                        Navigator.of(context).push(
+                                          PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: Desert(),
+                                          )
+                                        );
                                       },
                                       child: Text("Десерты"),
                                     ),
@@ -85,7 +99,12 @@ class _CategoryState extends State<Category>{
                                     width: size.width * 0.6,
                                     child: OutlinedButton(
                                       onPressed: () {
-                                        Navigator.pushNamed(context, '/snacks');
+                                        Navigator.of(context).push(
+                                          PageTransition(
+                                            type: PageTransitionType.fade,
+                                            child: Snack(),
+                                          )
+                                        );
                                       },
                                       child: Text("Закуски"),
                                     ),
@@ -96,15 +115,15 @@ class _CategoryState extends State<Category>{
                                     width: size.width * 0.6,
                                     child: OutlinedButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Final(query: FirebaseFirestore
-                                                        .instance.collection(
-                                                        'recipes').where('drinks',
-                                                        isEqualTo: true))
-                                            ));
+                                        Navigator.of(context).push(
+                                            PageTransition(
+                                              type: PageTransitionType.fade,
+                                              child: Final(
+                                                query: FirebaseFirestore.instance.collection('recipes')
+                                                  .where('drinks', isEqualTo: true)
+                                              ),
+                                            )
+                                        );
                                       },
                                       child: Text("Напитки"),
                                     ),
@@ -118,8 +137,8 @@ class _CategoryState extends State<Category>{
                   )
               ),
             );
-       /* });
+        });
       }
-    );*/
+    );
   }
 }
