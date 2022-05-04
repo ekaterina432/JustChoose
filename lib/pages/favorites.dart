@@ -10,17 +10,18 @@ class FavoritesPage extends StatefulWidget{
   @override
   _FavoritesPageState createState() =>_FavoritesPageState();
 }
-class _FavoritesPageState extends State<FavoritesPage>{
+class _FavoritesPageState extends State<FavoritesPage> with AutomaticKeepAliveClientMixin{
+
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
     Iterable<RecipeModelDB>favorites = context.watch<FavoritesModel>().getFavorites();
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Любимые рецепты"),
-        actions: [
-          Icon(Icons.favorite, color: Colors.white,),
-          SizedBox(width: 15,),
-        ],
       ),
       body: ListView.builder(
           physics: ScrollPhysics(),

@@ -48,6 +48,7 @@ class _SearchAppBarState extends State<SearchAppBar>{
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       title: _appBarTitle,
       actions: [
         IconButton(

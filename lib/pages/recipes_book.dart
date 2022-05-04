@@ -11,11 +11,15 @@ class RecipeBook extends StatefulWidget{
   @override
   _RecipeBookState createState() => _RecipeBookState();
 }
-class _RecipeBookState extends State<RecipeBook>{
+class _RecipeBookState extends State<RecipeBook> with AutomaticKeepAliveClientMixin{
   bool _searchBarActive = false;
   bool _searchActive = false;
   late Query<Map<String,dynamic>> _query;
   final TextEditingController _teController = TextEditingController();
+
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState(){

@@ -17,6 +17,7 @@ class _FinalState extends State<Final>{
 
       appBar:
       AppBar(
+        centerTitle: true,
         title: Text("Подобранные рецепты"),
       ),
       body: SafeArea(

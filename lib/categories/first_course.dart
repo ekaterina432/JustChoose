@@ -20,6 +20,7 @@ class _FirstCourseState extends State<FirstCourse>{
     return Scaffold(
       appBar:
       AppBar(
+        centerTitle: true,
         title: const Text("Первые блюда"),
       ),
       body: SafeArea(

@@ -19,6 +19,7 @@ class _DesertState extends State<Desert>{
     return Scaffold(
       appBar:
       AppBar(
+        centerTitle: true,
         title: const Text("Десерты"),
       ),
       body: SafeArea(

@@ -21,6 +21,7 @@ class _SecondCourseState extends State<SecondCourse>{
     return Scaffold(
       appBar:
       AppBar(
+        centerTitle: true,
         title: const Text("Второе блюдо"),
       ),
       body: SafeArea(

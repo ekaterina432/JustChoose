@@ -15,7 +15,10 @@ class Category extends StatefulWidget{
   @override
   _CategoryState createState() => _CategoryState();
 }
-class _CategoryState extends State<Category>{
+class _CategoryState extends State<Category> with AutomaticKeepAliveClientMixin{
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +32,7 @@ class _CategoryState extends State<Category>{
             return Scaffold(
               appBar:
               AppBar(
+                centerTitle: true,
                 title: const Text("Выбор по категориям "),
               ),
               body: SafeArea(

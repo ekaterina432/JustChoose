@@ -17,6 +17,7 @@ class _BakedState extends State<Baked>{
     return Scaffold(
       appBar:
       AppBar(
+        centerTitle: true,
         title: const Text("Запечённое"),
       ),
       body: SafeArea(

@@ -12,15 +12,15 @@ class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
   _HomeState createState() => _HomeState();
 }
-class _HomeState extends State<Home> with WidgetsBindingObserver {
-  int _selectedIndex =0;
+class _HomeState extends State<Home> with WidgetsBindingObserver, TickerProviderStateMixin {
   late GlobalKey _categoryNavigatorKey;
   late List<Widget> _pages;
-
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 4, vsync: this, initialIndex: 0);
     _categoryNavigatorKey = GlobalKey();
     _pages = [
       RecipeBook(),
@@ -53,18 +53,17 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    Key convexAppBarKey = Key("ConvexAppBar");
     return Scaffold(
         bottomNavigationBar: ConvexAppBar(
-          onTap: (int index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
+          key: convexAppBarKey,
+          controller: _tabController,
           backgroundColor: Theme.of(context).bottomAppBarColor,
           activeColor: Theme.of(context).primaryColor,
-          height: 50,
+          height: 55,
           top: -20,
-          initialActiveIndex: _selectedIndex,
+          curveSize: 70,
+          initialActiveIndex: _tabController.index,
           items: const [
             TabItem(icon:Icon(CustomIcons.book, size: 25, color: Colors.white,)),
             TabItem(icon:Icon(CustomIcons.categories, size: 25, color: Colors.white,)),
@@ -74,15 +73,22 @@ class _HomeState extends State<Home> with WidgetsBindingObserver {
         ),
         body: WillPopScope(
           onWillPop: () async{
-            if (_selectedIndex == 1){
-              bool res  = ! await Navigator.maybePop(_categoryNavigatorKey.currentState!.context);
-              print(res);
-              return res;
+            if (_tabController.index == 0){
+              return true;
             }
-            return Future<bool>.value(true);
+            if (_tabController.index == 1){
+              bool res  = ! await Navigator.maybePop(_categoryNavigatorKey.currentState!.context);
+              if (res){
+                _tabController.animateTo(0);
+              }
+              return false;
+            }
+            _tabController.animateTo(0);
+            return false;
           },
-          child: IndexedStack(
-            index: _selectedIndex,
+          child: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            controller: _tabController,
             children: _pages,
           )
         )

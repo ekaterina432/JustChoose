@@ -10,7 +10,7 @@ class HomeProduct extends StatefulWidget{
   @override
   _HomeProductState createState() => _HomeProductState();
 }
-class _HomeProductState extends State<HomeProduct>{
+class _HomeProductState extends State<HomeProduct> with AutomaticKeepAliveClientMixin{
   late List<Widget> _fields;
   late List<RecipeModelDB> _recipes = [];
   Set<String> _recipesIds = {};
@@ -21,6 +21,10 @@ class _HomeProductState extends State<HomeProduct>{
   bool _isRecipesReady = false;
   bool _isUpVisible = false;
   ScrollController _scrollController = new ScrollController();
+
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   void initState() {
     super.initState();
@@ -126,22 +130,29 @@ class _HomeProductState extends State<HomeProduct>{
       child: Scaffold(
         floatingActionButton: Visibility(
           visible: _isUpVisible,
-          child: FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                _isUpVisible = false;
-              });
-              _scrollController.animateTo(
-                -_scrollController.offset,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeOut
-              );
-            },
-            child: Icon(Icons.arrow_upward),
-          ),
+          child: SizedBox(
+              height: 50,
+              width: 50,
+              child: FittedBox(
+                  child: FloatingActionButton(
+                      onPressed: () {
+                        setState(() {
+                          _isUpVisible = false;
+                        });
+                        _scrollController.animateTo(
+                            -_scrollController.offset,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeOut
+                        );
+                      },
+                      child: Icon(Icons.keyboard_arrow_up, size: 30,)
+                  )
+              )
+          )
         ),
         appBar:
         AppBar(
+          centerTitle: true,
           title: const Text("Выбор по продуктам"),
         ),
         body: SafeArea(

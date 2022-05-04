@@ -14,6 +14,8 @@ class RecipesListUIDB extends StatefulWidget{
 class _RecipesListUIDB extends State<RecipesListUIDB>{
   bool _allFetched = false;
   bool _isLoading = false;
+  bool _isUpVisible = false;
+  ScrollController _scrollController = new ScrollController();
   List<RecipeModelDB> _data = [];
   DocumentSnapshot? _lastDocument;
   static const PAGE_SIZE = 10;
@@ -65,39 +67,78 @@ class _RecipesListUIDB extends State<RecipesListUIDB>{
 
   @override
   Widget build(BuildContext context) {
-    return NotificationListener<ScrollEndNotification>(
-      child: ListView.builder(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        physics: ScrollPhysics(),
-        itemBuilder: (context, index){
-          if (index == _data.length) {
-            return Container(
-              key: ValueKey('Loader'),
-              width: double.infinity,
-              height: 60,
-              child: Center(
-                child: CircularProgressIndicator(color: Theme.of(context).primaryColor),
-              ),
-            );
-          }
-          final item = _data[index];
-          return Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 22,
-              vertical: 12,
-            ),
-            child: RecipeCardDB(recipeModel: item),
-          );
-        },
-        itemCount: _data.length + (_allFetched ? 0 : 1),
-      ),
-      onNotification: (scrollEnd) {
-        if (scrollEnd.metrics.atEdge && scrollEnd.metrics.pixels > 0) {
-          _fetchFirebaseData();
-        }
-        return true;
-      },
+    return Stack(
+      children: [
+        NotificationListener<ScrollEndNotification>(
+          child: ListView.builder(
+            controller: _scrollController,
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            physics: ScrollPhysics(),
+            itemBuilder: (context, index){
+              if (index == _data.length) {
+                return Container(
+                  key: ValueKey('Loader'),
+                  width: double.infinity,
+                  height: 60,
+                  child: Center(
+                    child: CircularProgressIndicator(color: Theme.of(context).primaryColor),
+                  ),
+                );
+              }
+              final item = _data[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 22,
+                  vertical: 12,
+                ),
+                child: RecipeCardDB(recipeModel: item),
+              );
+            },
+            itemCount: _data.length + (_allFetched ? 0 : 1),
+          ),
+          onNotification: (scrollEnd) {
+            if(_scrollController.offset > _scrollController.position.viewportDimension) {
+              setState(() {
+                _isUpVisible = true;
+              });
+            } else{
+              setState(() {
+                _isUpVisible = false;
+              });
+            }
+            if (scrollEnd.metrics.atEdge && scrollEnd.metrics.pixels > 0) {
+              _fetchFirebaseData();
+            }
+            return true;
+          },
+        ),
+        Visibility(
+          visible: _isUpVisible,
+          child: Positioned(
+            bottom: 15,
+            right: 15,
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              child: FittedBox(
+                child: FloatingActionButton(
+                  onPressed: () {
+                    setState(() {
+                      _isUpVisible = false;
+                    });
+                    _scrollController.animateTo(
+                        -_scrollController.offset,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeOut
+                    );
+                  },
+                  child: Icon(Icons.keyboard_arrow_up, size: 30,)
+                )
+              )
+            )
+          )
+        )
+      ]
     );
-
   }
 }

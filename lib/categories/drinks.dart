@@ -15,6 +15,7 @@ class _DrinkState extends State<Drink>{
     return Scaffold(
       appBar:
       AppBar(
+        centerTitle: true,
         title: const Text("Напитки"),
       ),
       body: SafeArea(

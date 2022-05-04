@@ -19,6 +19,7 @@ class _SnackState extends State<Snack>{
     return Scaffold(
       appBar:
       AppBar(
+        centerTitle: true,
         title: const Text("Закуски"),
       ),
       body: SafeArea(
