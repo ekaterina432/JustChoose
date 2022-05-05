@@ -3,6 +3,7 @@ import 'package:flutproj2/models/recipe_model_db.dart';
 import 'package:flutproj2/ui/ingredient_search_field.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/logout_button.dart';
 import '../ui/recipe_card_db.dart';
 
 class HomeProduct extends StatefulWidget{
@@ -152,6 +153,7 @@ class _HomeProductState extends State<HomeProduct> with AutomaticKeepAliveClient
         ),
         appBar:
         AppBar(
+          leading: LogoutButton(),
           centerTitle: true,
           title: const Text("Выбор по продуктам"),
         ),

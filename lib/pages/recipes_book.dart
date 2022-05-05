@@ -41,18 +41,20 @@ class _RecipeBookState extends State<RecipeBook> with AutomaticKeepAliveClientMi
     return GestureDetector(
       onTapDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: SearchAppBar(teController: _teController,
-        onIsSearchingChange: (){
-          if (!_searchBarActive){
-            _searchBarActive = true;
-          } else {
-            setState(() {
-              _searchBarActive = false;
-              _searchActive = false;
-              _query = FirebaseFirestore.instance.collection('recipes');
-            });
+        appBar: SearchAppBar(
+          teController: _teController,
+          onIsSearchingChange: (){
+            if (!_searchBarActive){
+              _searchBarActive = true;
+            } else {
+              setState(() {
+                _searchBarActive = false;
+                _searchActive = false;
+                _query = FirebaseFirestore.instance.collection('recipes');
+              });
+            }
           }
-        },),
+        ),
         body: SafeArea(
           child: Container(
             color: Theme.of(context).scaffoldBackgroundColor,

@@ -1,3 +1,4 @@
+import 'package:flutproj2/ui/logout_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -48,6 +49,7 @@ class _SearchAppBarState extends State<SearchAppBar>{
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: LogoutButton(),
       centerTitle: true,
       title: _appBarTitle,
       actions: [

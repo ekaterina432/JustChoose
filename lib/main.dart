@@ -56,6 +56,11 @@ void main() async {
                       BorderSide.none)
               )
           ),
+          textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+              overlayColor: MaterialStateProperty.all<Color>(Colors.orange.withOpacity(0.2))
+            )
+          ),
           primaryColor: Colors.orange,
             colorScheme: ColorScheme.fromSwatch()
                 .copyWith(secondary: Colors.orange),

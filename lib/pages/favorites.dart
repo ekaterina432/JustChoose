@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutproj2/models/favorites_list.dart';
 
+import '../ui/logout_button.dart';
+
 class FavoritesPage extends StatefulWidget{
   @override
   const FavoritesPage({Key? key}) : super(key: key);
@@ -20,6 +22,7 @@ class _FavoritesPageState extends State<FavoritesPage> with AutomaticKeepAliveCl
     Iterable<RecipeModelDB>favorites = context.watch<FavoritesModel>().getFavorites();
     return Scaffold(
       appBar: AppBar(
+        leading: LogoutButton(),
         centerTitle: true,
         title: Text("Любимые рецепты"),
       ),

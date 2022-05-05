@@ -7,6 +7,7 @@ import 'package:flutproj2/categories/snacks.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../ui/logout_button.dart';
 import '../utils/constants.dart';
 
 class Category extends StatefulWidget{
@@ -32,6 +33,7 @@ class _CategoryState extends State<Category> with AutomaticKeepAliveClientMixin{
             return Scaffold(
               appBar:
               AppBar(
+                leading: LogoutButton(),
                 centerTitle: true,
                 title: const Text("Выбор по категориям "),
               ),

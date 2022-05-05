@@ -57,6 +57,7 @@ class FavoritesModel extends ChangeNotifier{
   }
 
   Future<void> saveFavorites() async{
+    user = FirebaseAuth.instance.currentUser;
     if (user != null){
       if ((await FirebaseFirestore.instance.collection("users").doc(user!.uid).get()).exists){
         await FirebaseFirestore.instance.collection("users").doc(user!.uid).update({

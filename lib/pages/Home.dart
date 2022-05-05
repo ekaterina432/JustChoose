@@ -3,6 +3,7 @@ import 'package:flutproj2/pages/favorites.dart';
 import 'package:flutproj2/pages/recipes_book.dart';
 import 'package:flutproj2/products/home_product.dart';
 import 'package:flutproj2/utils/custom_icons.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../categories/category.dart';
 import '../models/favorites_list.dart';
@@ -83,7 +84,13 @@ class _HomeState extends State<Home> with WidgetsBindingObserver, TickerProvider
               }
               return false;
             }
-            _tabController.animateTo(0);
+            GestureBinding.instance!.handlePointerEvent(PointerDownEvent(
+              position: Offset(10, MediaQuery.of(context).size.height - 10),
+            ));
+            GestureBinding.instance!.handlePointerEvent(PointerUpEvent(
+              position: Offset(10, MediaQuery.of(context).size.height - 10),
+            ));
+            //_tabController.animateTo(0);
             return false;
           },
           child: TabBarView(

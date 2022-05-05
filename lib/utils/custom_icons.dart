@@ -21,7 +21,8 @@ class CustomIcons {
   static const _kFontFam = 'CustomIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData book = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData logout = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ingredients = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData categories = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData book = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
