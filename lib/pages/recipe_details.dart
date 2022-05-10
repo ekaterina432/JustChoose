@@ -256,6 +256,7 @@ class Description extends StatelessWidget {
                       (recipeModel.nutrition['carbs'][1]).split(' ')[0]),
                 },
                 chartType: ChartType.ring,
+                chartRadius: 200,
                 baseChartColor: Colors.grey[300]!,
                 colorList: <Color>[
                   Colors.deepOrangeAccent,
