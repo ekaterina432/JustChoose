@@ -244,7 +244,7 @@ class Description extends StatelessWidget {
             ),
 
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 7),
+              padding: EdgeInsets.symmetric(horizontal: 9),
               child: PieChart(
                 dataMap:
                 {

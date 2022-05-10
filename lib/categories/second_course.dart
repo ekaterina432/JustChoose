@@ -34,7 +34,9 @@ class _SecondCourseState extends State<SecondCourse>{
                   ),
                 ),
                 Center(
-                    child:
+                child: SingleChildScrollView(
+
+                child:
                     Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +106,9 @@ class _SecondCourseState extends State<SecondCourse>{
                         ]
                     )
                 )
+                )
               ]
+
           )
       ),
     );

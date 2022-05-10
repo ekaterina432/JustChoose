@@ -48,7 +48,8 @@ class _CategoryState extends State<Category> with AutomaticKeepAliveClientMixin{
                           ),
                         ),
                         Center(
-                            child:
+                        child: SingleChildScrollView(
+                        child:
                             Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -138,6 +139,7 @@ class _CategoryState extends State<Category> with AutomaticKeepAliveClientMixin{
                                     padding: EdgeInsets.only(top: 20),),
                                 ]
                             )
+                        )
                         )
                       ]
                   )
